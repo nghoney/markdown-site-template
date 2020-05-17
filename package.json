@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~9.1.7",
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
+    "jquery": "^3.5.1",
     "marked": "^1.1.0",
     "materialize-css": "^1.0.0",
     "ngx-markdown": "^9.0.0",
