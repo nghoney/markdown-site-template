@@ -1,0 +1,12 @@
+title: Title (should be replaced)
+description: Add some description for the blog overview page here
+publish: false
+author: Author name
+mail: some@email
+updated: 2020-05-01
+keywords:
+  - Angular
+  - Scully
+language: en
+thumbnail: assets/images/someThumbnail.jpg
+thumbnailSmall: assets/images/someThumbnailSmall.jpg

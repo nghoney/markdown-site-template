@@ -1,27 +1,30 @@
-# MarkdownDocs
+# markdown-site-template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
+markdown-site-template 是一个用 Angular 编写的站点模板。
 
-## Development server
+## 特点
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- 基于最新 Angular 9。
+- 渐进式应用（PWA），可离线使用，更接近原生应用体验。
+- 支持 markdown 在线解析。
+- 部署简单，轻松使用
+- Material Design : 官方 Material Design，在桌面端移动端都有优秀的视觉效果，自带 light、dark 两套皮肤。
 
-## Code scaffolding
+## 使用场景
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- 为项目编写使用手册
 
-## Build
+   markdown-site-template 快速部署基于 Pages 的Docs。
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- 个人博客
 
-## Running unit tests
+  使用 markdown-site-template 快速搭建个人博客，使用markdown发布内容。
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- 记录笔记
 
-## Running end-to-end tests
+  使用基于 Git 的 markdown-site-template 作为在线笔记本，自带版本管理，记录不会丢失，手机也可以方便地阅读和使用。
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## NG能力集
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+使用了：服务、管道、路由、路由守卫、事件处理、表单验证等特性。
