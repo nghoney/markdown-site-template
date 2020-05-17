@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'updates', component: UpdateLogsComponent },
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+  { path: 'login', loadChildren: () => import('./user/user.module').then(m => m.LoginComponent) },
+  { path: 'updates', loadChildren: () => import('./updates/updates.module').then(m => m.UpdateLogsComponent) },
   {
     path: 'initializr',
-    loadChildren: 'app/initializr/initializr.module#InitializrModule',
+    loadChildren: () => import('./initializr/initializr.module').then(m => m.InitializrModule),
     canActivate: [ AuthService ]
   },
-  {
-    path: '',
-    loadChildren: 'app/blog/blog.module#BlogModule'
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  declarations: [],
+  imports: [
+    RouterModule.forRoot(routes),
+    CommonModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
