@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "markdown-docs": {
+    "markdown-site-template": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/markdown-docs",
+            "outputPath": "dist/markdown-site-template",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "markdown-docs:build"
+            "browserTarget": "markdown-site-template:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "markdown-docs:build:production"
+              "browserTarget": "markdown-site-template:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "markdown-docs:build"
+            "browserTarget": "markdown-site-template:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "markdown-docs:serve"
+            "devServerTarget": "markdown-site-template:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "markdown-docs:serve:production"
+              "devServerTarget": "markdown-site-template:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "markdown-docs"
+  "defaultProject": "markdown-site-template"
 }
