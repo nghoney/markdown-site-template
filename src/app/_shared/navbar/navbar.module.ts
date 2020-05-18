@@ -7,6 +7,7 @@ import { NavBarComponent } from './navbar.component';
 import { SharedModule } from '../ngmodules';
 
 @NgModule({
+  declarations: [NavBarComponent],
     imports: [
       CommonModule,
       MatButtonModule,
@@ -14,6 +15,7 @@ import { SharedModule } from '../ngmodules';
       RouterModule,
       SharedModule
     ],
-    declarations: [NavBarComponent]
+    exports: [NavBarComponent],
+
   })
   export class NavBarModule {}
