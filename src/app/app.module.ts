@@ -25,9 +25,7 @@ import { InitComponent } from './init/init.component';
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [
-    {provide: Window, useValue: window},
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar} from '@angular/material/snack-bar';
-import { MatDialog} from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { AboutComponent } from '../about/about.component';
@@ -18,10 +18,10 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private overlayContainer: OverlayContainer,
-    private window:Window,
+    //    private window: Window,
     private router: Router,
- //   public snackBar: MatSnackBar,
-  //  public dialog: MatDialog,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -32,10 +32,7 @@ export class HomeComponent implements OnInit {
 
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AboutComponent, {
-      minWidth: '25vw',
-      minHeight: '30vh'
-    });
+
   }
 
   toggleTheme(): void {

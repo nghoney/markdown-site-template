@@ -11,6 +11,9 @@ import { HomeComponent } from './home.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule
+  ],
+  providers: [
+    {provide: Window, useValue: window},
   ]
 })
 export class HomeModule { }
