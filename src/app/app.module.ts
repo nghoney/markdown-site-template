@@ -9,12 +9,14 @@ import { SharedModule } from './_shared/shared.module';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UpdateComponent } from './update/update.component';
+import { InitComponent } from './init/init.component';
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     NotFoundComponent,
-    UpdateComponent
+    UpdateComponent,
+    InitComponent
   ],
   imports: [
     BrowserModule,
