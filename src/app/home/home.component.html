@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div [class.unicorn-dark-theme]="isDark">
+    <mat-toolbar color="primary">
+      <button mat-button routerLink="/" routerLinkActive="active">
+        <mat-icon color="accent">book</mat-icon>
+        <span>{{title}}</span>
+      </button>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+  
+  
