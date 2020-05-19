@@ -1,1 +1,26 @@
-<p>This home content works!</p>
+<mat-sidenav-container>
+    <mat-sidenav #sideNav mode="{{getSideNavMode()}}" opened="{{isDefaultOpen()}}">
+        <button class="side-btn" mat-mini-fab (click)="sideNav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-list>
+            <h2 mat-subheader>Contents List
+                <mat-icon id="add-btn" color="accent" (click)="close(); openAddBlogDialog()">add_circle</mat-icon>
+            </h2>
+            <div *ngFor="let dir of dirs">
+                <mat-expansion-panel [expanded]="isMarkedDir(dir.name)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="dirIcon" mat-line color="primary">folder</mat-icon>
+                            {{dir.name}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+            </div>
+        </mat-list>
+    </mat-sidenav>
+    <button class="content-btn" mat-mini-fab (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>
