@@ -1,0 +1,33 @@
+mat-sidenav-container {
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+  
+  mat-sidenav {
+    min-width: 20vw;
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    overflow-y: initial;
+  }
+  
+  .dirIcon {
+    margin-right: 1em;
+  }
+  
+  .side-btn {
+    position: absolute;
+    right: -20px;
+    top: 28px;
+    z-index: 5;
+  }
+  
+  .content-btn {
+    position: fixed;
+    left: -20px;
+    top: 84px;
+    z-index: 5;
+  }
+  
+  #add-btn {
+    padding-left: 0.5em;
+  }
+  
