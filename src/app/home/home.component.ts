@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { AboutComponent } from '../about/about.component';
+import { MatSidenav } from '@angular/material/sidenav';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-home',
@@ -13,30 +14,50 @@ import { AboutComponent } from '../about/about.component';
 
 export class HomeComponent implements OnInit {
 
-  title: string;
-  isDark: boolean;
+  @ViewChild(MatSidenav) sideNav: MatSidenav;
+  dirs: any[];
+  markedDir: string;
 
   constructor(
-    private overlayContainer: OverlayContainer,
-    //    private window: Window,
     private router: Router,
-    public snackBar: MatSnackBar,
     public dialog: MatDialog,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
-    this.title = 'demo';
-    this.isDark = false;
 
   }
 
+  getSideNavMode(): string {
+    return "side";
+  }
 
-  openDialog(): void {
+  isMarkedDir(dir: string): boolean {
+    return dir == this.markedDir;
+  }
+
+  isDefaultOpen(): boolean {
+    return true;
+  }
+
+  close(): void {
 
   }
 
-  toggleTheme(): void {
+  openAddBlogDialog(): void {
+    
+  }
 
+  createBlog(dir: string, file: string): void {
+   
+  }
+
+  handleError(err: HttpErrorResponse): void {
+    
+  }
+
+  onDeleted(isDeleted: boolean) {
+   
   }
 
 }
