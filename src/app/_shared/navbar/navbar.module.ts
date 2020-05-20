@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import { NavBarComponent } from './navbar.component';
-import { SharedModule } from '../ngmodules';
+import { SharedModule } from '../mats';
 
 @NgModule({
   declarations: [NavBarComponent],
