@@ -1,1 +1,11 @@
-<p>news works!</p>
+<div class="whatIsNewContent">
+<!-- 
+    <app-issue-content *ngFor="let issue of issues | async" [issue]="issue" (onClosed)="onClosed($event)">
+    </app-issue-content>
+-->
+</div>
+
+<!-- 分页器 -->
+<mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = $event; search()">
+</mat-paginator>
