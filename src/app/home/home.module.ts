@@ -4,9 +4,10 @@ import { SharedModule } from '../_shared/mats';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FooterComponent } from './footer/footer.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
-  declarations: [HomeComponent,FooterComponent],
+  declarations: [HomeComponent,FooterComponent, NewsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
