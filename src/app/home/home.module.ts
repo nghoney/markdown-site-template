@@ -5,9 +5,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsComponent } from './news/news.component';
+import { ContentComponent } from './news/content/content.component';
 
 @NgModule({
-  declarations: [HomeComponent,FooterComponent, NewsComponent],
+  declarations: [HomeComponent,FooterComponent, NewsComponent, ContentComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

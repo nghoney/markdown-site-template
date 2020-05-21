@@ -1,0 +1,43 @@
+mat-card {
+    margin: 1em auto;
+    width: 80%;
+  }
+  
+  .body-content {
+    padding: 0 1em;
+  }
+  
+  h3 {
+    margin: 0;
+  }
+  
+  .header-image {
+    background-size: cover;
+  }
+  
+  :host > a {
+      font-weight: 600
+  }
+  
+  mat-card-title {
+    width: 100%;
+  }
+  
+  mat-icon {
+    float: right;
+    margin-left: 10px;
+  }
+  
+  .markdown-section {
+    width: 96%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 600px) {
+    .body-content {
+      padding: 0;
+      width: 100%;
+    }
+  }
+  
