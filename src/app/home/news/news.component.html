@@ -1,8 +1,5 @@
-<div class="whatIsNewContent">
-<!-- 
-    <app-issue-content *ngFor="let issue of issues | async" [issue]="issue" (onClosed)="onClosed($event)">
-    </app-issue-content>
--->
+<div class="NewContent">
+    <app-content *ngFor="let issue of issues | async" [issue]="issue" (onClosed)="onClosed($event)"> </app-content>
 </div>
 
 <!-- 分页器 -->
