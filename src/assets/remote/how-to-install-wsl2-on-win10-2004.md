@@ -34,6 +34,8 @@ wsl --set-default-version 2
 ## 安装一个Linux发行版
 
  直接访问：<https://aka.ms/wslstore> 将会打开windows商店的WSL发行版页面,选择你的想要的发行版
+ 
+ ![wsl-store-page](https://docs.microsoft.com/en-us/windows/wsl/media/store.png)
 
 
 ## 设置或者转换一个发行版为WSL2架构
