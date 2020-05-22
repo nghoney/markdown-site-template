@@ -13,13 +13,19 @@
 
 ![开启Virtual Machine Platform](https://blog.icodef.com/wp-content/uploads/2019/06/2fd49865293c12aaa0b550b0a35ec143.png)
 
-或管理员PowerShell运行:
+或PowerShell管理员模式运行:
 
 ```ps
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 ```
 
-## PowerShell管理员运行下列命令，设置全局默认运行时环境为WSL2
+## PowerShell管理员模式下开启WSL 子系统
+
+```ps
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+```
+
+## PowerShell管理员模式下运行下列命令，设置全局默认运行时环境为WSL2
 
 ```ps
 wsl --set-default-version 2 
