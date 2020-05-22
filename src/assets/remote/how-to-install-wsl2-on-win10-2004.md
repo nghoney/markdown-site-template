@@ -50,7 +50,7 @@ wsl --list --v
 
 需要注意，在商店中的安装并没有实际上完成 Linux 子系统的安装，你还需要运行一次已安装的 Linux 发行版以执行真正的安装操作。
 
-![运行一次已安装的 Linux 发行版](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDkvMjcvTURsQWNPRWJWNEYzVXM3LnBuZw?x-oss-process=image/format,png)
+![运行一次已安装的 Linux 发行版](https://docs.microsoft.com/en-us/windows/wsl/media/ubuntuinstall.png)
 
 
 ## 更多参考
