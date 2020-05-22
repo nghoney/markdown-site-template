@@ -19,7 +19,7 @@
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 ```
 
-## PowerShell管理员运行，下列命令，设置默认为全局默认的运行时环境为WSL2
+## PowerShell管理员运行下列命令，设置全局默认运行时环境为WSL2
 
 ```ps
 wsl --set-default-version 2 
