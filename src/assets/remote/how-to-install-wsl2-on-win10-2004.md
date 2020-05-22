@@ -58,3 +58,9 @@ wsl --list --v
 ## 更多参考
 
 [wsl-in-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+
+## Alphine 扩展
+
+```bash
+To (re-)set root password run `wsl.exe --user root --distribution Alpine passwd`
+```
