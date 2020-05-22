@@ -1,1 +1,7 @@
-<p>about works!</p>
+<mat-spinner *ngIf="isOnLoading"></mat-spinner>
+<div class="markdown-content-section">
+    <markdown>
+     about me
+    </markdown>
+    <markdown [src]="'assets/remote/about.md'"></markdown>
+</div>

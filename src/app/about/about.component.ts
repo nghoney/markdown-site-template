@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ConfService } from '../_shared/service/config.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-about',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  content: string;
+  isOnLoading = true;
 
-  constructor() { }
+  constructor(
+  //  private confService: ConfService,
+  //  public dialogRef: MatDialogRef<AboutComponent>,
+  //  @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+
+  }
+
+  onNoClick(): void {
+  //  this.dialogRef.close();
   }
 
 }
