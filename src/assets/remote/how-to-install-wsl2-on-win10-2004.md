@@ -52,3 +52,7 @@ wsl --list --v
 
 ![运行一次已安装的 Linux 发行版](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDkvMjcvTURsQWNPRWJWNEYzVXM3LnBuZw?x-oss-process=image/format,png)
 
+
+## 更多参考
+
+[wsl-in-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
