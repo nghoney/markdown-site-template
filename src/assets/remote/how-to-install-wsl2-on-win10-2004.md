@@ -63,4 +63,5 @@ wsl --list --v
 
 ```bash
 To (re-)set root password run `wsl.exe --user root --distribution Alpine passwd`
+To use root : ` wsl --distribution Alpine --user root`
 ```
