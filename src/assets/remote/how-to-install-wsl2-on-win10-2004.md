@@ -58,6 +58,7 @@ wsl --list --v
 ## 更多参考
 
 [wsl-in-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+[using Alpine](https://jlelse.blog/dev/using-windows-3/)
 
 ## Alphine 扩展
 
