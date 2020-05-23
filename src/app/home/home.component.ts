@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
+  //  private blogService: BlogService,
+  //  public authService: AuthService,
+  //  private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
