@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../_shared/service/auth.service';
 
 
 @Component({
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-  //  private blogService: BlogService,
-  //  public authService: AuthService,
+  // private blogService: BlogService,
+   public authService: AuthService,
   //  private utilsService: UtilsService
   ) { }
 
