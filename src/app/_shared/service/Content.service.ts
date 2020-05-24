@@ -12,13 +12,12 @@ export class ContentService {
     private confService: ConfigService,
     private gitService: GitService,
     private utilsService: UtilsService
-  ) { }
+  ) {
+    
+   }
 
   getLeftMenuCatalogs(): Promise<any[]> {
-    return this.gitService
-      .getLabels(
-        this.confService.config.owner,
-        this.confService.config.repo);
+    return this.gitService.getLabels();
   }
 
   getFiles(dir: string): Promise<any[]> {

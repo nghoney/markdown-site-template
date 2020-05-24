@@ -17,11 +17,11 @@ import { ContentService } from '../_shared/service/content.service';
 
 export class HomeComponent implements OnInit {
 
-  @ViewChild(MatSidenav) 
+  @ViewChild(MatSidenav)
   sideNav: MatSidenav;
-  
+
   leftMenuCatalogs: any[];
-  
+
   markedDir: string;
 
   constructor(
@@ -36,7 +36,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.contentService
       .getLeftMenuCatalogs()
-      .then(catalogs => this.leftMenuCatalogs = catalogs);
+      .then(catalogs => {
+        this.leftMenuCatalogs = catalogs;
+        console.log('left menu catalog:', this.leftMenuCatalogs);
+      });
   }
 
   getSideNavMode(): string {

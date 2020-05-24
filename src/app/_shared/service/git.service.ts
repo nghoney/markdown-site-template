@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
 
@@ -7,11 +7,14 @@ const apiBasePath = environment.apiBasePath;
 const apiRepoBasePath = environment.apiRepoBasePath;
 const apiUserBasePath = environment.apiUserBasePath;
 
-@Injectable()
+@Injectable({ 
+  providedIn: 'root'
+})
 export class GitService {
 
   owner: string;
   repo: string;
+  branch: string;
 
   //user related repo url
   gitUserRepoUrl: string;
@@ -39,7 +42,6 @@ export class GitService {
 
   updateAPIUrl() {
 
-
     this.gitUserRepoUrl = apiRepoBasePath + '/' + this.owner + '/' + this.repo;
     this.gitUserStarredRepoUrl = apiUserBasePath + '/starred/' + this.owner + '/' + this.repo;
     this.gitBlobUrl = this.gitUserRepoUrl + '/git/blobs/';
@@ -52,9 +54,17 @@ export class GitService {
 
   }
 
-  fromUserRepo(owner: string, repo: string): GitService {
+  initOwnerRepoBranch(owner: string, repo: string, branch?: string) {
     this.owner = owner;
     this.repo = repo;
+    if (branch != null) {
+      this.branch = branch;
+    }
+
+  }
+
+  fromUserRepo(owner: string, repo: string): GitService {
+    this.initOwnerRepoBranch(owner, repo);
     this.updateAPIUrl()
     return this;
   }
@@ -150,11 +160,9 @@ export class GitService {
   }
 
   // Labels
-  getLabels(owner: string, repo: string): Promise<any[]> {
+  getLabels(): Promise<any[]> {
     let url = this.gitIssueUrl + 'labels';
-    return this.http
-      .get<any[]>(url)
-      .toPromise();
+    return this.http.get<any[]>(url).toPromise();
   }
 
   getCommentsOfIssue(owner: string, repo: string, number: string, page = 1, perPage = 20, accessToken?: string): Promise<any[]> {
