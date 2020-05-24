@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../_shared/service/auth.service';
+import { UtilsService } from '../_shared/service/utils.service';
 
 
 @Component({
@@ -23,9 +24,9 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-  // private blogService: BlogService,
-   public authService: AuthService,
-  //  private utilsService: UtilsService
+    //private blogService: ContentService,
+    public authService: AuthService,
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
@@ -49,19 +50,19 @@ export class HomeComponent implements OnInit {
   }
 
   openAddBlogDialog(): void {
-    
+
   }
 
   createBlog(dir: string, file: string): void {
-   
+
   }
 
   handleError(err: HttpErrorResponse): void {
-    
+
   }
 
   onDeleted(isDeleted: boolean) {
-   
+
   }
 
 }

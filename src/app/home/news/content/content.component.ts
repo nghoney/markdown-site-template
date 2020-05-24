@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfService } from 'src/app/_shared/service/config.service';
+import { ConfigService } from 'src/app/_shared/service/config.service';
 import { AuthService } from 'src/app/_shared/service/auth.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class ContentComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private confService: ConfService,
+    private confService: ConfigService ,
     public authService: AuthService,
   ) { }
 

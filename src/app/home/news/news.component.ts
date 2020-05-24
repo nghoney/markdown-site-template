@@ -21,8 +21,8 @@ export class NewsComponent implements OnInit {
   constructor(
     private matPaginatorIntl: MatPaginatorIntl,
     public snackBar: MatSnackBar,
-   // private confService: ConfService,
-   // private gitProxyService: GitProxyService
+   // private confService: ConfigService ,
+   // private gitProxyService: GitService
   ) { }
 
   ngOnInit() {

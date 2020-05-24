@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ConfService } from '../_shared/service/config.service';
+import { ConfigService } from '../_shared/service/config.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   isOnLoading = true;
 
   constructor(
-  //  private confService: ConfService,
+  //  private confService: ConfigService ,
   //  public dialogRef: MatDialogRef<AboutComponent>,
   //  @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
