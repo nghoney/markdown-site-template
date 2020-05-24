@@ -25,13 +25,13 @@ export class GitService {
   gitRepoCommits: string;
 
   //markdown url
-  markdownUrl : string;
+  markdownUrl: string;
 
   constructor(
     private http: HttpClient,
   ) {
 
-    this.markdownUrl =apiBasePath + '/v5/markdown';
+    this.markdownUrl = apiBasePath + '/v5/markdown';
     //starred url
     this.updateAPIUrl()
 
@@ -40,7 +40,7 @@ export class GitService {
   updateAPIUrl() {
 
 
-    this.gitUserRepoUrl = apiRepoBasePath + this.owner + '/' + this.repo;
+    this.gitUserRepoUrl = apiRepoBasePath + '/' + this.owner + '/' + this.repo;
     this.gitUserStarredRepoUrl = apiUserBasePath + '/starred/' + this.owner + '/' + this.repo;
     this.gitBlobUrl = this.gitUserRepoUrl + '/git/blobs/';
     this.gitTreeUrl = this.gitUserRepoUrl + '/git/gitee/trees/';
@@ -49,10 +49,10 @@ export class GitService {
     this.gitRepoTags = this.gitRepoContentUrl + '/tags';
     this.gitRepoBranches = this.gitUserRepoUrl + '/branches';
     this.gitRepoCommits = this.gitUserRepoUrl + '/commits';
-  
+
   }
 
-  from(owner: string, repo: string): GitService {
+  fromUserRepo(owner: string, repo: string): GitService {
     this.owner = owner;
     this.repo = repo;
     this.updateAPIUrl()
@@ -282,14 +282,10 @@ export class GitService {
       .toPromise();
   }
 
-  getRepo(owner: string, repo: string, access_token?: string): Promise<any> {
-    let params = access_token
-      ? { access_token: access_token }
-      : {};
+  getRepo(access_token?: string): Promise<any> {
+    let params = access_token ? { access_token: access_token } : {};
     return this.http
-      .get(this.gitUserRepoUrl, {
-        params: params
-      })
+      .get(this.gitUserRepoUrl, { params: params })
       .toPromise();
   }
 

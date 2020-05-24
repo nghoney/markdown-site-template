@@ -1,74 +1,46 @@
 import { Injectable, OnInit, Inject } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Config } from '../model/config';
 import { environment } from '../../../environments/environment'
 import { GitService } from './git.service';
 import { Location } from '@angular/common';
 
 const targetBranch = environment.branch
-const baseUrl = environment.baseUrl;
+const baseUrl = environment.pageBaseUrl;
 @Injectable()
 export class ConfigService {
-  config = new Config();
+
+  //setup a default value for user、 repo and branch
+  config = new Config('crazybber', 'markdown-site-template', 'master');
 
   constructor(
     @Inject(Location) private location: Location,
-    private giService: GitService
+    private gitService: GitService,
+    private routes: ActivatedRoute
   ) { }
 
-  initConfigByRoute(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let routePath: string = state.url;
-
-    this.config.owner = routePath.substring(0, routePath.indexOf(baseUrl));
-    if (routePath == '/') {
-      this.config.repo = this.config.owner;
-    } else {
-      this.config.repo = routePath.substring(1, routePath.length);
-      if (this.config.repo.endsWith('/')) {
-        this.config.repo = this.config.repo.substring(0, this.config.repo.length - 1);
-      }
-    }
-    this.config.branch = targetBranch;
+  initConfigByRoute() {
+    console.log('routes: ', this.routes.url)
   }
 
-  initConfig2(): void {
 
-    var urlPath = window.location.host
+  initConfigWithDefault(): void {
 
-    this.config.owner = urlPath.substring(0, urlPath.indexOf(baseUrl));
-    if (urlPath == '/') {
-      this.config.repo = this.config.owner;
-    } else {
-      this.config.repo = urlPath.substring(1, urlPath.length);
-      if (this.config.repo.endsWith('/')) {
-        this.config.repo = this.config.repo.substring(0, this.config.repo.length - 1);
-      }
+    this.initConfigByRoute()
+
+    if (location.hostname !== 'localhost') {
+      this.config.owner = location.host.substring(0, location.host.indexOf(baseUrl));
     }
-    this.config.branch = targetBranch;
-  }
-
-  initConfig(): void {
-
-    
-    if (location.hostname == 'localhost') {
-      this.config.owner = 'crazybber';
-    }
-
-    this.config.owner = location.host.substring(0, location.host.indexOf(baseUrl));
-    if (window.location.pathname == '/') {
-      this.config.repo = this.config.owner;
-    } else {
+    //username.github.io/user.github.io/project
+    if (location.pathname !== '/') {
       this.config.repo = location.pathname.substring(1, location.pathname.length);
       if (this.config.repo.endsWith('/')) {
         this.config.repo = this.config.repo.substring(0, this.config.repo.length - 1);
       }
     }
     this.config.branch = targetBranch;
-    this.giService
-      .getRepo(
-        this.config.owner,
-        this.config.repo
-      )
+    this.gitService.fromUserRepo(this.config.owner, this.config.repo) /// xxx.xxx/crazybber/some-repo
+      .getRepo()
       .then(repo => this.config.admin = repo.owner.login);
   }
 

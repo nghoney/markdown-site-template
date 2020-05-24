@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   branch: 'master',
   apiBasePath: 'https://gitee.com/api/v5', //use gitee repo
-  apiRepoBasePath:'https://gitee.com/api/v5/repo',
+  apiRepoBasePath:'https://gitee.com/api/v5/repos',
   apiUserBasePath: 'https://gitee.com/api/v5/user',
-  baseUrl: '.github.io',
+  pageBaseUrl: '.gitee.io',
 };
 
 /*
