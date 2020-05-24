@@ -6,7 +6,7 @@ import { UtilsService } from './utils.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class contentService {
+export class ContentService {
 
   constructor(
     private confService: ConfigService,
@@ -14,7 +14,7 @@ export class contentService {
     private utilsService: UtilsService
   ) { }
 
-  getDirs(): Promise<any[]> {
+  getLeftMenuCatalogs(): Promise<any[]> {
     return this.gitService
       .getLabels(
         this.confService.config.owner,
@@ -54,7 +54,7 @@ export class contentService {
         this.confService.config.branch);
   }
 
-  // 创建文档
+  // create files
   createFile(dir: string, file: string, labels?: string[]): Promise<any> {
     return this.gitService
       .createIssue(
@@ -72,14 +72,14 @@ export class contentService {
             this.confService.config.repo,
             '/' + 'docs/' + issue.number,
             this.utilsService.b64EncodeUnicode('# ' + file),
-            ':memo: 创建了《' + file + '》',
+            ':article:《' + file + '》 created',
             sessionStorage.getItem('access_token'),
             this.confService.config.branch
           )
       );
   }
 
-  // 删除文档
+  // delete files
   deleteFile(number: string, title: string): Promise<any> {
     return this.gitService
       .updateIssue(
@@ -92,7 +92,7 @@ export class contentService {
       )
   }
 
-  // 更改文档
+  // update files contents
   updateFileContent(fileContents: any, title: string, content: string): Promise<any> {
     return this.gitService
       .updateFile(
@@ -101,7 +101,7 @@ export class contentService {
         '/' + fileContents.path,
         this.utilsService.b64EncodeUnicode(content),
         fileContents.sha,
-        ':memo: 更新了《' + title + '》',
+        ':article:《' + title + '》 updated',
         sessionStorage.getItem('access_token'),
         this.confService.config.branch
       );

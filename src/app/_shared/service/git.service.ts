@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
+import { ConfigService } from './config.service';
 
 
 const apiBasePath = environment.apiBasePath;
@@ -10,47 +11,71 @@ const apiUserBasePath = environment.apiUserBasePath;
 
 @Injectable()
 export class GitService {
-  
 
+  owner: string;
+  repo: string;
+  gitUserRepoUrl: string;
+  gitStaredRepoUrl: string;
+  gitBlobUrl: string;
+  gitTreeUrl: string;
+  gitIssueUrl: string;
+  gitRepoContentUrl: string;
+  gitRepoTags: string;
+  gitRepoBranches: string;
+  gitRepoCommits: string;
   constructor(
-    private http: HttpClient
-
+    private http: HttpClient,
+    private configService: ConfigService
   ) {
 
+    //this is default action
+    this.owner = this.configService.config.owner;
+    this.repo = this.configService.config.repo;
+
+    //starred url
+    this.gitUserRepoUrl = apiRepoBasePath + this.owner + '/' + this.repo;
+    this.gitStaredRepoUrl = apiUserBasePath + 'starred/' + this.owner + '/' + this.repo;
+    this.gitBlobUrl = this.gitUserRepoUrl + '/git/blobs/';
+    this.gitTreeUrl = this.gitUserRepoUrl + '/git/gitee/trees/';
+    this.gitIssueUrl = this.gitUserRepoUrl + '/issues/';
+    this.gitRepoContentUrl = this.gitUserRepoUrl + '/contents';
+    this.gitRepoTags = this.gitRepoContentUrl + '/tags';
+    this.gitRepoBranches = this.gitUserRepoUrl + '/branches';
+    this.gitRepoCommits = this.gitUserRepoUrl + '/commits';
   }
+
+  from(owner: string, repo: string): GitService {
+    this.owner = owner;
+    this.repo = repo;
+    return this;
+  }
+
   // Activity
-  starred(owner: string, repo: string, access_token: string): void {
-    let url = apiUserBasePath + 'starred/' + owner + '/' + repo;
+  starred(access_token: string): void {
+
     let body = {
       access_token: access_token
     }
     this.http
-      .put(url, body)
+      .put(this.gitStaredRepoUrl, body)
       .toPromise()
       .then();
   }
 
   // Git Data
-  getBlob(owner: string, repo: string, sha: string, access_token?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/git/blobs/' + sha;
-    let params = access_token
-      ? { access_token: access_token }
-      : {};
-    return this.http
-      .get(url, {
-        params: params
-      })
+  getBlob(sha: string, access_token?: string): Promise<any> {
+    let targetUrl = this.gitBlobUrl + sha;
+    let params = access_token ? { access_token: access_token } : {};
+    return this.http.get(targetUrl, { params: params })
       .toPromise()
       .then(response => response);
   }
 
   getTree(owner: string, repo: string, sha: string, recursive?: number, access_token?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/git/gitee/trees/' + sha;
+    let url = this.gitTreeUrl + sha;
     let params = {};
     if (access_token) {
-      params = recursive
-        ? { access_token: access_token, recursive: recursive }
-        : { access_token: access_token };
+      params = recursive ? { access_token: access_token, recursive: recursive } : { access_token: access_token };
     } else if (recursive) {
       params = { recursive: recursive }
     }
@@ -63,17 +88,15 @@ export class GitService {
 
   // Issues
   simpleGetIssues(owner: string, repo: string, milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/issues';
-    let params = labels
-      ? {
-        milestone: milestone,
-        labels: labels,
-        page: '' + page,
-        per_page: '' + per_page,
-        state: state,
-        sort: sort,
-        direction: direction
-      }
+    let params = labels ? {
+      milestone: milestone,
+      labels: labels,
+      page: '' + page,
+      per_page: '' + per_page,
+      state: state,
+      sort: sort,
+      direction: direction
+    }
       : {
         milestone: milestone,
         page: '' + page,
@@ -83,14 +106,11 @@ export class GitService {
         direction: direction
       };
     return this.http
-      .get<any[]>(url, {
-        params: params
-      })
+      .get<any[]>(this.gitIssueUrl, { params: params })
       .toPromise();
   }
 
   createIssue(owner: string, repo: string, title: string, body: string, milestone: number, labels: string[], accessToken: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/issues';
     let requestBody = {
       title: title,
       body: body,
@@ -99,15 +119,13 @@ export class GitService {
       access_token: accessToken
     }
     return this.http
-      .post<any>(url, requestBody)
+      .post<any>(this.gitIssueUrl, requestBody)
       .toPromise();
   }
 
   getIssue(owner: string, repo: string, number: string, accessToken?: string): Observable<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/issues/' + number;
-    let params = accessToken
-      ? { access_token: accessToken }
-      : {};
+    let url = this.gitIssueUrl + number;
+    let params = accessToken ? { access_token: accessToken } : {};
     return this.http
       .get(url, {
         params: params
@@ -115,7 +133,7 @@ export class GitService {
   }
 
   updateIssue(owner: string, repo: string, number: string, title: string, accessToken: string, state?: string, body?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/issues/' + number;
+    let url = this.gitIssueUrl + number;
     let requestBody = { title: title, access_token: accessToken, state: state, body: body };
     return this.http
       .patch(url, requestBody)
@@ -124,14 +142,14 @@ export class GitService {
 
   // Labels
   getLabels(owner: string, repo: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/labels';
+    let url = this.gitIssueUrl + 'labels';
     return this.http
       .get<any[]>(url)
       .toPromise();
   }
 
   getCommentsOfIssue(owner: string, repo: string, number: string, page = 1, perPage = 20, accessToken?: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/issues/' + number + '/comments';
+    let url = this.gitIssueUrl + number + '/comments';
     let params = accessToken
       ? { page: page + '', per_page: perPage + '', access_token: accessToken }
       : { page: page + '', per_page: perPage + '' };
@@ -141,51 +159,44 @@ export class GitService {
       })
       .toPromise();
   }
-  // Miscellaneous
+
+  // markdownText
   markdownText(text: string, access_token?: string): Promise<string> {
     let url = apiBasePath + '/v5/markdown';
-    let body = access_token
-      ? { text: text, access_token: access_token }
-      : { text: text };
+    let body = access_token ? { text: text, access_token: access_token } : { text: text };
     return this.http
-      .post(url, body, {
-        responseType: 'text'
-      })
+      .post(url, body, { responseType: 'text' })
       .toPromise();
   }
 
   // Repositories
   getBranches(owner: string, repo: string, access_token?: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/branches';
-    let params = access_token
-      ? { access_token: access_token }
-      : {}
+
+    let params = access_token ? { access_token: access_token } : {}
     return this.http
-      .get<any[]>(url, {
+      .get<any[]>(this.gitRepoBranches, {
         params: params
       })
       .toPromise();
   }
 
   simpleGetCommits(owner: string, repo: string, sha: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/commits';
+
     let params = {
       sha: sha
     };
     return this.http
-      .get<any[]>(url, {
+      .get<any[]>(this.gitRepoCommits, {
         params: params
       })
       .toPromise();
   }
 
   getReadme(owner: string, repo: string, ref?: string, access_token?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/readme';
+    let url = this.gitUserRepoUrl + '/readme';
     let params = {};
     if (ref) {
-      params = access_token
-        ? { ref: ref, access_token: access_token }
-        : { ref: ref };
+      params = access_token ? { ref: ref, access_token: access_token } : { ref: ref };
     } else if (access_token) {
       params = { access_token: access_token };
     }
@@ -197,10 +208,7 @@ export class GitService {
   }
 
   getDirContents(owner: string, repo: string, path?: string, ref?: string, access_token?: string): Promise<any[]> {
-    let url = path
-      ? apiRepoBasePath + owner + '/' + repo + '/contents' + path
-      : apiRepoBasePath + owner + '/' + repo + '/contents';
-
+    let url = path ? this.gitRepoContentUrl + path : this.gitRepoContentUrl;
     let params = {};
     if (ref) {
       params = access_token
@@ -218,7 +226,7 @@ export class GitService {
   }
 
   getFileContent(owner: string, repo: string, path: string, ref?: string, access_token?: string): Observable<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/contents' + path;
+    let url = this.gitRepoContentUrl + path;
 
     let params = {};
     if (ref) {
@@ -236,7 +244,7 @@ export class GitService {
   }
 
   updateFile(owner: string, repo: string, path: string, content: string, sha: string, message: string, access_token: string, branch?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/contents' + path;
+    let url = this.gitRepoContentUrl + path;
     let body = branch
       ? { content: content, sha: sha, message: message, access_token: access_token, branch: branch }
       : { content: content, sha: sha, message: message, access_token: access_token };
@@ -246,7 +254,7 @@ export class GitService {
   }
 
   createFile(owner: string, repo: string, path: string, content: string, message: string, access_token: string, branch: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/contents' + path;
+    let url = this.gitRepoContentUrl + path;
     let body = { content: content, message: message, access_token: access_token, branch: branch };
     return this.http
       .post<any>(url, body)
@@ -254,7 +262,7 @@ export class GitService {
   }
 
   deleteFile(owner: string, repo: string, path: string, sha: string, message: string, access_token: string, branch?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/contents' + path;
+    let url = this.gitRepoContentUrl + path;
     let params = branch
       ? { sha: sha, message: message, access_token: access_token, branch: branch }
       : { sha: sha, message: message, access_token: access_token };
@@ -266,24 +274,22 @@ export class GitService {
   }
 
   getRepo(owner: string, repo: string, access_token?: string): Promise<any> {
-    let url = apiRepoBasePath + owner + '/' + repo;
     let params = access_token
       ? { access_token: access_token }
       : {};
     return this.http
-      .get(url, {
+      .get(this.gitUserRepoUrl, {
         params: params
       })
       .toPromise();
   }
 
   getTags(owner: string, repo: string, access_token?: string): Promise<any[]> {
-    let url = apiRepoBasePath + owner + '/' + repo + '/tags';
     let params = access_token
       ? { access_token: access_token }
       : {};
     return this.http
-      .get<any[]>(url, {
+      .get<any[]>(this.gitRepoTags, {
         params: params
       })
       .toPromise();
@@ -295,9 +301,7 @@ export class GitService {
       access_token: access_token
     }
     return this.http
-      .get(apiUserBasePath, {
-        params: params
-      })
+      .get(apiUserBasePath, { params: params })
       .toPromise();
   }
 }
