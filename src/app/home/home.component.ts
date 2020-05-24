@@ -43,6 +43,9 @@ export class HomeComponent implements OnInit {
   }
 
   getSideNavMode(): string {
+    if (this.utilsService.isSmartDevice()) {
+      return "over";
+    }
     return "side";
   }
 
@@ -51,11 +54,13 @@ export class HomeComponent implements OnInit {
   }
 
   isDefaultOpen(): boolean {
-    return true;
+    return !this.utilsService.isSmartDevice();
   }
 
   close(): void {
-
+    if (this.utilsService.isSmartDevice()) {
+      this.sideNav.close();
+    }
   }
 
   openAddBlogDialog(): void {

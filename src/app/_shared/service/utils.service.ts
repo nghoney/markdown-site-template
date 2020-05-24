@@ -10,12 +10,25 @@ export class UtilsService {
     public snackBar: MatSnackBar
   ) { }
 
-  isMobile(): boolean {
+
+  isSmartDevice(): boolean {
+    let userAgentInfo = navigator.userAgent;
+    let mobileAgents = ["Android", "iPhone", "iPad", "iPod", "BlackBerry", "Opera Mini", "IEMobile"];
+    let flag = false;
+
     if (document.body.offsetWidth < 1000) {
-      return true;
+      flag = true;
     }
-    return false;
+    for (var v = 0; v < mobileAgents.length; v++) {
+      if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+        flag = true;
+        break;
+      }
+    }
+
+    return flag;
   }
+
 
   // 将字符串编码为 base64
   b64EncodeUnicode(str): string {

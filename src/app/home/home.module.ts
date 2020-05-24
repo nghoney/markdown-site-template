@@ -7,9 +7,10 @@ import { FooterComponent } from './footer/footer.component';
 import { NewsComponent } from './news/news.component';
 import { ContentComponent } from './news/content/content.component';
 import { ConfigService, AuthService, UtilsService, ContentService } from '../_shared/service';
+import { FolderComponent } from './folder/folder.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent],
+  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, FolderComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
