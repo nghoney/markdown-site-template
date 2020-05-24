@@ -20,7 +20,7 @@ export class ConfigService {
     private gitService: GitService,
     private routes: ActivatedRoute
   ) {
-    this.gitService.initOwnerRepoBranch(this.config.owner, this.config.repo, this.config.branch)
+    this.gitService.setupOwnerRepoBranch(this.config.owner, this.config.repo, this.config.branch)
   }
 
   initConfigByRoute() {
@@ -34,13 +34,6 @@ export class ConfigService {
 
     if (location.hostname !== 'localhost') {
       this.config.owner = location.host.substring(0, location.host.indexOf(baseUrl));
-    }
-    //username.github.io/user.github.io/project
-    if (location.pathname !== '/') {
-      this.config.repo = location.pathname.substring(1, location.pathname.length);
-      if (this.config.repo.endsWith('/')) {
-        this.config.repo = this.config.repo.substring(0, this.config.repo.length - 1);
-      }
     }
     this.config.branch = targetBranch;
     this.gitService.fromUserRepo(this.config.owner, this.config.repo) /// xxx.xxx/crazybber/some-repo

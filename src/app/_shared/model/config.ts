@@ -4,7 +4,6 @@ export class Config {
   repo: string;
   branch: string;
 
-
   constructor(defaultOwner?: string, defaultRepo?: string, defaultBranch?: string) {
     this.owner = defaultOwner;
     this.repo = defaultRepo;

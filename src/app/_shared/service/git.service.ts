@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
+import { LeftMenuCatalogItem } from '../model';
 
 const apiBasePath = environment.apiBasePath;
 const apiRepoBasePath = environment.apiRepoBasePath;
@@ -54,7 +55,7 @@ export class GitService {
 
   }
 
-  initOwnerRepoBranch(owner: string, repo: string, branch?: string) {
+  setupOwnerRepoBranch(owner: string, repo: string, branch?: string) {
     this.owner = owner;
     this.repo = repo;
     if (branch != null) {
@@ -64,7 +65,7 @@ export class GitService {
   }
 
   fromUserRepo(owner: string, repo: string): GitService {
-    this.initOwnerRepoBranch(owner, repo);
+    this.setupOwnerRepoBranch(owner, repo);
     this.updateAPIUrl()
     return this;
   }
@@ -160,8 +161,8 @@ export class GitService {
   }
 
   // Labels
-  getLabels(): Promise<any[]> {
-    let url = this.gitIssueUrl + 'labels';
+  getLabels(): Promise<LeftMenuCatalogItem[]> {
+    let url = this.gitUserRepoUrl + '/labels';
     return this.http.get<any[]>(url).toPromise();
   }
 
