@@ -7,7 +7,9 @@ import { Location } from '@angular/common';
 
 const targetBranch = environment.branch
 const baseUrl = environment.pageBaseUrl;
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ConfigService {
 
   //setup a default value for user、 repo and branch
@@ -17,10 +19,12 @@ export class ConfigService {
     @Inject(Location) private location: Location,
     private gitService: GitService,
     private routes: ActivatedRoute
-  ) { }
+  ) {
+    this.gitService.initOwnerRepoBranch(this.config.owner, this.config.repo, this.config.branch)
+  }
 
   initConfigByRoute() {
-    console.log('routes: ', this.routes.url)
+    console.log('routes snapshot url: ', this.routes.snapshot.url)
   }
 
 
@@ -41,7 +45,10 @@ export class ConfigService {
     this.config.branch = targetBranch;
     this.gitService.fromUserRepo(this.config.owner, this.config.repo) /// xxx.xxx/crazybber/some-repo
       .getRepo()
-      .then(repo => this.config.admin = repo.owner.login);
+      .then(repo => {
+        this.config.admin = repo.owner.login;
+        console.log('repo info from getRepo : ', repo)
+      });
   }
 
 }

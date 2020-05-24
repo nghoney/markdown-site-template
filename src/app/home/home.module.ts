@@ -6,7 +6,7 @@ import { HomeComponent } from './home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsComponent } from './news/news.component';
 import { ContentComponent } from './news/content/content.component';
-import { ConfigService, AuthService, UtilsService, ContentService,GitService } from '../_shared/service';
+import { ConfigService, AuthService, UtilsService, ContentService } from '../_shared/service';
 
 @NgModule({
   declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent],
@@ -20,8 +20,7 @@ import { ConfigService, AuthService, UtilsService, ContentService,GitService } f
     AuthService,
     ConfigService,
     UtilsService,
-    ContentService,
-    GitService
+    ContentService
   ]
 })
 export class HomeModule { }
