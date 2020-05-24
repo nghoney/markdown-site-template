@@ -5,7 +5,7 @@ import { Config } from '../model/config';
 export const branch = 'gh-pages';
 
 @Injectable()
-export class ConfService {
+export class ConfigService {
   config = new Config();
 
   constructor(

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { ConfService } from './config.service';
+import { ConfigService } from './config.service';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -11,7 +11,7 @@ export class AuthService implements CanActivate {
 
   constructor(
     private router: Router,
-    private confService: ConfService
+    private confService: ConfigService
   ) { }
 
   login(accessToken: string, user: any): void {
