@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatSidenav) 
   sideNav: MatSidenav;
   
-  Catalogs: any[];
+  leftMenuCatalogs: any[];
   
   markedDir: string;
 
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.contentService
       .getLeftMenuCatalogs()
-      .then(catalogs => this.Catalogs = catalogs);
+      .then(catalogs => this.leftMenuCatalogs = catalogs);
   }
 
   getSideNavMode(): string {

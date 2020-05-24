@@ -1,3 +1,4 @@
+import { ConfigService,GitService } from './_shared/service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, SecurityContext } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,9 @@ export function markedOptions(): MarkedOptions {
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    MatPaginatorIntl
+    MatPaginatorIntl,
+    ConfigService,
+    GitService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,9 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, Inject } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Config } from '../model/config';
 import { environment } from '../../../environments/environment'
 import { GitService } from './git.service';
+import { Location } from '@angular/common';
 
 const targetBranch = environment.branch
 const baseUrl = environment.baseUrl;
@@ -11,6 +12,7 @@ export class ConfigService {
   config = new Config();
 
   constructor(
+    @Inject(Location) private location: Location,
     private giService: GitService
   ) { }
 
@@ -46,11 +48,17 @@ export class ConfigService {
   }
 
   initConfig(): void {
-    this.config.owner = window.location.host.substring(0, window.location.host.indexOf(baseUrl));
+
+    
+    if (location.hostname == 'localhost') {
+      this.config.owner = 'crazybber';
+    }
+
+    this.config.owner = location.host.substring(0, location.host.indexOf(baseUrl));
     if (window.location.pathname == '/') {
       this.config.repo = this.config.owner;
     } else {
-      this.config.repo = window.location.pathname.substring(1, window.location.pathname.length);
+      this.config.repo = location.pathname.substring(1, location.pathname.length);
       if (this.config.repo.endsWith('/')) {
         this.config.repo = this.config.repo.substring(0, this.config.repo.length - 1);
       }

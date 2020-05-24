@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
-import { ConfigService } from './config.service';
-
 
 const apiBasePath = environment.apiBasePath;
 const apiRepoBasePath = environment.apiRepoBasePath;
@@ -14,6 +12,8 @@ export class GitService {
 
   owner: string;
   repo: string;
+
+  //user related repo url
   gitUserRepoUrl: string;
   gitUserStarredRepoUrl: string;
   gitBlobUrl: string;
@@ -23,16 +23,23 @@ export class GitService {
   gitRepoTags: string;
   gitRepoBranches: string;
   gitRepoCommits: string;
+
+  //markdown url
+  markdownUrl : string;
+
   constructor(
     private http: HttpClient,
-    private configService: ConfigService
   ) {
 
-    //this is default action
-    this.owner = this.configService.config.owner;
-    this.repo = this.configService.config.repo;
-
+    this.markdownUrl =apiBasePath + '/v5/markdown';
     //starred url
+    this.updateAPIUrl()
+
+  }
+
+  updateAPIUrl() {
+
+
     this.gitUserRepoUrl = apiRepoBasePath + this.owner + '/' + this.repo;
     this.gitUserStarredRepoUrl = apiUserBasePath + '/starred/' + this.owner + '/' + this.repo;
     this.gitBlobUrl = this.gitUserRepoUrl + '/git/blobs/';
@@ -42,11 +49,13 @@ export class GitService {
     this.gitRepoTags = this.gitRepoContentUrl + '/tags';
     this.gitRepoBranches = this.gitUserRepoUrl + '/branches';
     this.gitRepoCommits = this.gitUserRepoUrl + '/commits';
+  
   }
 
   from(owner: string, repo: string): GitService {
     this.owner = owner;
     this.repo = repo;
+    this.updateAPIUrl()
     return this;
   }
 
@@ -162,10 +171,10 @@ export class GitService {
 
   // markdownText
   markdownText(text: string, access_token?: string): Promise<string> {
-    let url = apiBasePath + '/v5/markdown';
+
     let body = access_token ? { text: text, access_token: access_token } : { text: text };
     return this.http
-      .post(url, body, { responseType: 'text' })
+      .post(this.markdownUrl, body, { responseType: 'text' })
       .toPromise();
   }
 

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   ) { }
 
   ngOnInit() {
+    console.log('init config from page url')
     this.configService.initConfig();
   }
 }
