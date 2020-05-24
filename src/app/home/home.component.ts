@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    //private blogService: ContentService,
+    //private blogService: contentService,
     public authService: AuthService,
     private utilsService: UtilsService
   ) { }

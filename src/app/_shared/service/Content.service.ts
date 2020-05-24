@@ -6,23 +6,23 @@ import { UtilsService } from './utils.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ContentService {
+export class contentService {
 
   constructor(
     private confService: ConfigService,
-    private gitProxyService: GitService,
+    private gitService: GitService,
     private utilsService: UtilsService
   ) { }
 
   getDirs(): Promise<any[]> {
-    return this.gitProxyService
+    return this.gitService
       .getLabels(
         this.confService.config.owner,
         this.confService.config.repo);
   }
 
   getFiles(dir: string): Promise<any[]> {
-    return this.gitProxyService
+    return this.gitService
       .simpleGetIssues(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -37,7 +37,7 @@ export class ContentService {
   }
 
   getFile(number: string): Observable<any> {
-    return this.gitProxyService
+    return this.gitService
       .getIssue(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -46,7 +46,7 @@ export class ContentService {
   }
 
   getFileContent(path: string): Observable<any> {
-    return this.gitProxyService
+    return this.gitService
       .getFileContent(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -56,7 +56,7 @@ export class ContentService {
 
   // 创建文档
   createFile(dir: string, file: string, labels?: string[]): Promise<any> {
-    return this.gitProxyService
+    return this.gitService
       .createIssue(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -66,7 +66,7 @@ export class ContentService {
         [dir],
         sessionStorage.getItem('access_token')
       ).then(issue =>
-        this.gitProxyService
+        this.gitService
           .createFile(
             this.confService.config.owner,
             this.confService.config.repo,
@@ -80,8 +80,8 @@ export class ContentService {
   }
 
   // 删除文档
-  deleleFile(number: string, title: string): Promise<any> {
-    return this.gitProxyService
+  deleteFile(number: string, title: string): Promise<any> {
+    return this.gitService
       .updateIssue(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -94,7 +94,7 @@ export class ContentService {
 
   // 更改文档
   updateFileContent(fileContents: any, title: string, content: string): Promise<any> {
-    return this.gitProxyService
+    return this.gitService
       .updateFile(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -108,7 +108,7 @@ export class ContentService {
   }
 
   updateFile(number: string, title: string, body: string, path: string): Promise<any> {
-    return this.gitProxyService
+    return this.gitService
       .updateIssue(
         this.confService.config.owner,
         this.confService.config.repo,

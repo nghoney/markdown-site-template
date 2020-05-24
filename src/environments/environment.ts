@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  branch: 'develop',
   apiBasePath: 'https://github.com/api/v3/',
   apiUserBasePath: 'https://github.com/api/v5/user/',
   apiRepoBasePath: 'https://github.com/api/v5/repos/',
