@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBasePath: 'https://github.com/api/v3/',
+  apiUserBasePath: 'https://github.com/api/v5/user/',
+  apiRepoBasePath: 'https://github.com/api/v5/repos/',
 };
 
 /*
