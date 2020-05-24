@@ -5,9 +5,10 @@
 export const environment = {
   production: false,
   branch: 'develop',
-  apiBasePath: 'https://github.com/api/v3/',
-  apiUserBasePath: 'https://github.com/api/v5/user/',
-  apiRepoBasePath: 'https://github.com/api/v5/repos/',
+  apiBasePath: 'https://github.com/api/v3',
+  apiUserBasePath: 'https://github.com/api/v5/user',
+  apiRepoBasePath: 'https://github.com/api/v5/repos',
+  baseUrl: '.github.io',
 };
 
 /*
@@ -17,4 +18,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.

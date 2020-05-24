@@ -6,6 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../_shared/service/auth.service';
 import { UtilsService } from '../_shared/service/utils.service';
+import { ContentService } from '../_shared/service/content.service';
 
 
 @Component({
@@ -16,21 +17,26 @@ import { UtilsService } from '../_shared/service/utils.service';
 
 export class HomeComponent implements OnInit {
 
-  @ViewChild(MatSidenav) sideNav: MatSidenav;
-  dirs: any[];
+  @ViewChild(MatSidenav) 
+  sideNav: MatSidenav;
+  
+  Catalogs: any[];
+  
   markedDir: string;
 
   constructor(
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    //private blogService: contentService,
+    private contentService: ContentService,
     public authService: AuthService,
     private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
-
+    this.contentService
+      .getLeftMenuCatalogs()
+      .then(catalogs => this.Catalogs = catalogs);
   }
 
   getSideNavMode(): string {
