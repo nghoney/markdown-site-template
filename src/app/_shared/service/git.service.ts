@@ -15,7 +15,7 @@ export class GitService {
   owner: string;
   repo: string;
   gitUserRepoUrl: string;
-  gitStaredRepoUrl: string;
+  gitUserStarredRepoUrl: string;
   gitBlobUrl: string;
   gitTreeUrl: string;
   gitIssueUrl: string;
@@ -34,7 +34,7 @@ export class GitService {
 
     //starred url
     this.gitUserRepoUrl = apiRepoBasePath + this.owner + '/' + this.repo;
-    this.gitStaredRepoUrl = apiUserBasePath + 'starred/' + this.owner + '/' + this.repo;
+    this.gitUserStarredRepoUrl = apiUserBasePath + '/starred/' + this.owner + '/' + this.repo;
     this.gitBlobUrl = this.gitUserRepoUrl + '/git/blobs/';
     this.gitTreeUrl = this.gitUserRepoUrl + '/git/gitee/trees/';
     this.gitIssueUrl = this.gitUserRepoUrl + '/issues/';
@@ -57,7 +57,7 @@ export class GitService {
       access_token: access_token
     }
     this.http
-      .put(this.gitStaredRepoUrl, body)
+      .put(this.gitUserStarredRepoUrl, body)
       .toPromise()
       .then();
   }

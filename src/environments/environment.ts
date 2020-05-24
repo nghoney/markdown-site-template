@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  branch: 'develop',
-  apiBasePath: 'https://github.com/api/v3',
-  apiUserBasePath: 'https://github.com/api/v5/user',
-  apiRepoBasePath: 'https://github.com/api/v5/repos',
+  branch: 'master',
+  apiBasePath: 'https://gitee.com/api/v5', //use gitee repo
+  apiRepoBasePath:'https://gitee.com/api/v5/repo',
+  apiUserBasePath: 'https://gitee.com/api/v5/user',
   baseUrl: '.github.io',
 };
 
