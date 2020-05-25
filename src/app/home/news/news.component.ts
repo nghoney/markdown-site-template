@@ -22,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NewsComponent implements OnInit, AfterViewInit {
 
   repo: any;
-  issues: Observable<any[]>;
+  newsContentList: Observable<any[]>;
   length = 0;
   pageSize = 7;
   pageSizeOptions = [7];
@@ -53,12 +53,13 @@ export class NewsComponent implements OnInit, AfterViewInit {
 
     this.gitService.getRepo().then(repo => this.length = repo.open_issues_count);
 
-    this.issues = this.matPaginatorIntl.changes.pipe(switchMap(() => this.gitService.simpleGetIssues(
-      'news',
+    this.newsContentList = this.matPaginatorIntl.changes.pipe(switchMap(() => this.gitService.simpleGetIssues(
+      'latest-news',
       this.pageEvent ? this.pageEvent.pageIndex + 1 : 1,
       this.pageSize)
     )
     );
+    console.log('newsContentList',this.newsContentList);
   }
 
   ngAfterViewInit() {

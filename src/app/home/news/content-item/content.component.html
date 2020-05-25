@@ -4,7 +4,7 @@
         <mat-card-title>
             <h3>{{title}}</h3>
             <mat-icon color="accent" (click)="openCloseIssueDialog()">delete</mat-icon>
-            <mat-icon color="accent" routerLink="/issue/{{issue.number}}">edit</mat-icon>
+            <mat-icon color="accent" routerLink="/issue/{{oneArticle.number}}">edit</mat-icon>
         </mat-card-title>
         <mat-card-subtitle>{{createAt | date:"yyyy-MM-dd" }}</mat-card-subtitle>
     </mat-card-header>

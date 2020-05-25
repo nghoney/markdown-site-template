@@ -117,16 +117,25 @@ export class GitService {
   // Issues stand for contents
   simpleGetIssues(milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
 
-    let params = {
-      milestone: milestone,
-      labels: labels,
-      page: '' + page,
-      per_page: '' + per_page,
-      state: state,
-      sort: sort,
-      direction: direction
-    };
-    console.log('params:',params);
+    let params = labels ?
+      {
+        milestone: milestone,
+        labels: labels,
+        page: '' + page,
+        per_page: '' + per_page,
+        state: state,
+        sort: sort,
+        direction: direction
+      } : {
+        milestone: milestone,
+        page: '' + page,
+        per_page: '' + per_page,
+        state: state,
+        sort: sort,
+        direction: direction
+      };
+
+    // console.log('output params:',params);
     return this.http.get<any[]>(this.gitIssueUrl, { params: params }).toPromise();
   }
 

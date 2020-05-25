@@ -1,10 +1,9 @@
 <div class="NewContent">
-    <app-content-item *ngFor="let issue of issues | async" [issue]="issue" (onClosed)="onClosed($event)"> </app-content-item>
+    <app-content-item *ngFor="let contentItem of newsContentList | async" [oneArticle]="contentItem"
+        (onClosed)="onClosed($event)"> </app-content-item>
 </div>
 
 <!-- 分页器 -->
 <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     (page)="pageEvent = $event; updatePaginatorDisplay()">
 </mat-paginator>
-
-

@@ -20,8 +20,10 @@ import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
 })
 export class ContentComponent implements OnInit {
 
-  @Input() issue: any;
-  @Output() onClosed = new EventEmitter<boolean>();
+  @Input() 
+  oneArticle: any;
+  @Output() 
+  onClosed = new EventEmitter<boolean>();
   headerImageStyle: any = {};
   user: string;
   createAt: string;
@@ -37,20 +39,19 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.issue.user.login;
+    this.user = this.oneArticle.user.login;
     this.headerImageStyle = {
-      'background-image': "url('" + this.issue.user.avatar_url + "')",
+      'background-image': "url('" + this.oneArticle.user.avatar_url + "')",
       'background-size': 'cover'
     }
-    this.createAt = this.issue.created_at;
-    this.title = this.issue.title;
+    this.createAt = this.oneArticle.created_at;
+    this.title = this.oneArticle.title;
 
     console.log('this.title', this.title)
     console.log('this.createAt', this.createAt)
 
 
-
-    this.utilsService.markdownText(this.issue.body)
+    this.utilsService.markdownText(this.oneArticle.body)
       .then(body => this.body = body);
 
   }
@@ -60,7 +61,7 @@ export class ContentComponent implements OnInit {
       minWidth: '25vw',
       minHeight: '30vh',
       data: {
-        title: this.issue.title
+        title: this.oneArticle.title
       }
     });
 
@@ -74,8 +75,8 @@ export class ContentComponent implements OnInit {
 
   closeIssue(): void {
     this.gitService.updateIssue(
-      this.issue.number,
-      this.issue.title,
+      this.oneArticle.number,
+      this.oneArticle.title,
       sessionStorage.getItem('access_token'),
       'closed'
     ).then(() => this.onClosed.emit(true));
