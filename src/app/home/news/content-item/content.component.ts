@@ -10,7 +10,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfigService, AuthService, GitService, UtilsService } from '../../../_shared/service';
+import { AuthService, GitService, UtilsService } from '../../../_shared/service';
 import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class ContentComponent implements OnInit {
 
   @Input() issue: any;
   @Output() onClosed = new EventEmitter<boolean>();
-  headerImageStyle = {};
+  headerImageStyle: any = {};
   user: string;
   createAt: string;
   title: string;
@@ -31,7 +31,6 @@ export class ContentComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private confService: ConfigService,
     public authService: AuthService,
     private gitService: GitService,
     private utilsService: UtilsService
@@ -45,7 +44,13 @@ export class ContentComponent implements OnInit {
     }
     this.createAt = this.issue.created_at;
     this.title = this.issue.title;
-    this.utilsService.markdownText(this.utilsService.emojiParser(this.issue.body))
+
+    console.log('this.title', this.title)
+    console.log('this.createAt', this.createAt)
+
+
+
+    this.utilsService.markdownText(this.issue.body)
       .then(body => this.body = body);
 
   }
@@ -73,7 +78,6 @@ export class ContentComponent implements OnInit {
       this.issue.title,
       sessionStorage.getItem('access_token'),
       'closed'
-    )
-      .then(() => this.onClosed.emit(true));
+    ).then(() => this.onClosed.emit(true));
   }
 }

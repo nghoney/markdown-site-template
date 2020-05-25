@@ -5,7 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsComponent } from './news/news.component';
-import { ContentComponent } from './news/content/content.component';
+import { ContentComponent } from './news/content-item/content.component';
 import { ConfigService, AuthService, UtilsService, ContentService } from '../_shared/service';
 import { FolderComponent } from './folder/folder.component';
 import { CloseDialogComponent } from './news/close-dialog/close-dialog.component';

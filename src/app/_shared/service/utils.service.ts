@@ -2,7 +2,7 @@
  * @Author: Edward https://github.com/crazybber 
  * @Date: 2020-05-25 18:12:31 
  * @Last Modified by: Edward
- * @Last Modified time: 2020-05-25 18:13:09
+ * @Last Modified time: 2020-05-25 18:41:06
  */
 
 import { Injectable } from '@angular/core';
@@ -57,7 +57,8 @@ export class UtilsService {
   }
 
   markdownText(text: string): Promise<string> {
-    return of(text).pipe().toPromise();
+    let emojiParsedText = this.emojiParser(text)
+    return of(emojiParsedText).pipe().toPromise();
   }
 
   emojiParser(text: string): string {
