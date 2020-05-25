@@ -1,0 +1,20 @@
+<!--
+ * @Author: Edward https://github.com/crazybber
+ * @Date: 2020-05-25 17:55:29
+ * @LastEditors: Edward
+ * @FilePath: \markdown-site-template\src\app\home\news\close-dialog\close-dialog.component.html
+ * @LastEditTime: 2020-05-25 17:58:55
+ * @description: NG markdown site template @ MIT License
+-->
+
+<div>
+    <h2 class="mat-dialog-title">close</h2>
+    <mat-dialog-content>
+        <p>
+            {{data.title}}
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button id="dialog-btn" mat-raised-button [mat-dialog-close]="true" color="primary">confirm</button>
+    </mat-dialog-actions>
+</div>
