@@ -12,5 +12,18 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true
+    },
+    "fileheader.customMade": {
+        "Author": "Edward https://github.com/crazybber",
+        "Date": "Do not edit", // 文件创建时间(不变)
+        "LastEditors": "Edward", // 文件最后编辑者
+        "FilePath": "Do not edit", // 文件在项目中的相对路径 自动更新
+        "LastEditTime": "Do not edit", // 文件最后编辑时间
+        "description": "NG markdown site template @ MIT License"
+    },
+    "fileheader.configObj": {
+        "afterAnnotation": {
+            "*": "\r" // 所有文件新增头部注释之后都空一行
+        }
     }
 }
