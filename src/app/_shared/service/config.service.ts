@@ -1,3 +1,12 @@
+/*
+ * @Author: Edward https://github.com/crazybber
+ * @Date: 2020-05-18 09:46:29
+ * @LastEditors: Edward
+ * @FilePath: \markdown-site-template\src\app\_shared\service\config.service.ts
+ * @LastEditTime: 2020-05-25 16:48:33
+ * @description: NG markdown site template @ MIT License
+ */ 
+
 import { Injectable, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Config } from '../model/config';
@@ -24,7 +33,7 @@ export class ConfigService {
   }
 
   initConfigByRoute() {
-    console.log('routes snapshot url: ', this.routes.snapshot.url)
+    //console.log('routes snapshot url: ', this.routes.snapshot.url)
   }
 
 
@@ -40,7 +49,7 @@ export class ConfigService {
       .getRepo()
       .then(repo => {
         this.config.admin = repo.owner.login;
-        console.log('repo info from getRepo : ', repo)
+      //  console.log('repo info from getRepo : ', repo)
       });
   }
 

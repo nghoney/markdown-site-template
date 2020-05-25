@@ -13,8 +13,8 @@ export class ContentService {
     private gitService: GitService,
     private utilsService: UtilsService
   ) {
-    
-   }
+
+  }
 
   getLeftMenuCatalogs(): Promise<any[]> {
     return this.gitService.getLabels();
@@ -22,17 +22,7 @@ export class ContentService {
 
   getFiles(dir: string): Promise<any[]> {
     return this.gitService
-      .simpleGetIssues(
-        this.confService.config.owner,
-        this.confService.config.repo,
-        'documents',
-        1,
-        100,
-        'open',
-        'created',
-        'asc',
-        dir
-      );
+      .simpleGetIssues('documents', 1, 100, 'open', 'created', 'asc', dir);
   }
 
   getFile(number: string): Observable<any> {
@@ -82,8 +72,6 @@ export class ContentService {
   deleteFile(number: string, title: string): Promise<any> {
     return this.gitService
       .updateIssue(
-        this.confService.config.owner,
-        this.confService.config.repo,
         number,
         title,
         sessionStorage.getItem('access_token'),
@@ -109,8 +97,6 @@ export class ContentService {
   updateFile(number: string, title: string, body: string, path: string): Promise<any> {
     return this.gitService
       .updateIssue(
-        this.confService.config.owner,
-        this.confService.config.repo,
         number,
         title,
         sessionStorage.getItem('access_token'),
