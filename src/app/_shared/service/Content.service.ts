@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ConfigService } from './config.service';
-import { GitService } from './git.service';
+import { ApiService } from '../api/api.service';
 import { UtilsService } from './utils.service';
 import { Observable } from 'rxjs';
 
@@ -10,23 +10,23 @@ export class ContentService {
 
   constructor(
     private confService: ConfigService,
-    private gitService: GitService,
+    private apiService: ApiService,
     private utilsService: UtilsService
   ) {
 
   }
 
   getLeftMenuCatalogs(): Promise<any[]> {
-    return this.gitService.getLabels();
+    return this.apiService.getLabels();
   }
 
   getFiles(dir: string): Promise<any[]> {
-    return this.gitService
+    return this.apiService
       .simpleGetIssues('documents', 1, 100, 'open', 'created', 'asc', dir);
   }
 
   getFile(number: string): Observable<any> {
-    return this.gitService
+    return this.apiService
       .getIssue(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -35,7 +35,7 @@ export class ContentService {
   }
 
   getFileContent(path: string): Observable<any> {
-    return this.gitService
+    return this.apiService
       .getFileContent(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -45,7 +45,7 @@ export class ContentService {
 
   // create files
   createFile(dir: string, file: string, labels?: string[]): Promise<any> {
-    return this.gitService
+    return this.apiService
       .createIssue(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -55,7 +55,7 @@ export class ContentService {
         [dir],
         sessionStorage.getItem('access_token')
       ).then(issue =>
-        this.gitService
+        this.apiService
           .createFile(
             this.confService.config.owner,
             this.confService.config.repo,
@@ -70,7 +70,7 @@ export class ContentService {
 
   // delete files
   deleteFile(number: string, title: string): Promise<any> {
-    return this.gitService
+    return this.apiService
       .updateIssue(
         number,
         title,
@@ -81,7 +81,7 @@ export class ContentService {
 
   // update files contents
   updateFileContent(fileContents: any, title: string, content: string): Promise<any> {
-    return this.gitService
+    return this.apiService
       .updateFile(
         this.confService.config.owner,
         this.confService.config.repo,
@@ -95,7 +95,7 @@ export class ContentService {
   }
 
   updateFile(number: string, title: string, body: string, path: string): Promise<any> {
-    return this.gitService
+    return this.apiService
       .updateIssue(
         number,
         title,

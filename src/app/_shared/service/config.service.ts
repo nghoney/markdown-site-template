@@ -11,7 +11,7 @@ import { Injectable, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Config } from '../model/config';
 import { environment } from '../../../environments/environment'
-import { GitService } from './git.service';
+import { ApiService } from '../api/api.service';
 import { Location } from '@angular/common';
 
 const targetBranch = environment.branch
@@ -26,10 +26,10 @@ export class ConfigService {
 
   constructor(
     @Inject(Location) private location: Location,
-    private gitService: GitService,
+    private apiService: ApiService,
     private routes: ActivatedRoute
   ) {
-    this.gitService.setupOwnerRepoBranch(this.config.owner, this.config.repo, this.config.branch)
+    this.apiService.setupOwnerRepoBranch(this.config.owner, this.config.repo, this.config.branch)
   }
 
   initConfigByRoute() {
@@ -45,7 +45,7 @@ export class ConfigService {
       this.config.owner = location.host.substring(0, location.host.indexOf(baseUrl));
     }
     this.config.branch = targetBranch;
-    this.gitService.fromUserRepo(this.config.owner, this.config.repo) /// xxx.xxx/crazybber/some-repo
+    this.apiService.fromUserRepo(this.config.owner, this.config.repo) /// xxx.xxx/crazybber/some-repo
       .getRepo()
       .then(repo => {
         this.config.admin = repo.owner.login;

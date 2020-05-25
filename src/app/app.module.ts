@@ -1,4 +1,5 @@
-import { ConfigService,GitService } from './_shared/service';
+import { ConfigService } from './_shared/service';
+import { ApiService } from './_shared/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, SecurityContext } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +23,7 @@ export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
 
   renderer.blockquote = (text: string) => {
-      return '<p>' + text + '</p>';
+    return '<p>' + text + '</p>';
   };
 
   return { renderer };
@@ -47,13 +48,13 @@ export function markedOptions(): MarkedOptions {
       loader: HttpClient,
       markedOptions: { provide: MarkedOptions, useFactory: markedOptions },
       sanitize: SecurityContext.HTML, // default value
-  }),
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     MatPaginatorIntl,
     ConfigService,
-    GitService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

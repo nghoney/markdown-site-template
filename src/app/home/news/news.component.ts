@@ -7,7 +7,7 @@
  * @description: NG markdown site template @ MIT License
  */
 
-import { GitService } from '../../_shared/service';
+import { ApiService } from '../../_shared/api';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
   constructor(
     private matPaginatorIntl: MatPaginatorIntl,
     public snackBar: MatSnackBar,
-    private gitService: GitService
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -51,9 +51,9 @@ export class NewsComponent implements OnInit, AfterViewInit {
 
     console.log('init issue list')
 
-    this.gitService.getRepo().then(repo => this.length = repo.open_issues_count);
+    this.apiService.getRepo().then(repo => this.length = repo.open_issues_count);
 
-    this.newsContentList = this.matPaginatorIntl.changes.pipe(switchMap(() => this.gitService.simpleGetIssues(
+    this.newsContentList = this.matPaginatorIntl.changes.pipe(switchMap(() => this.apiService.simpleGetIssues(
       'latest-news',
       this.pageEvent ? this.pageEvent.pageIndex + 1 : 1,
       this.pageSize)

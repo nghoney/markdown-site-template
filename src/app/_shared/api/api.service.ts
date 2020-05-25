@@ -19,7 +19,7 @@ const apiUserBasePath = environment.apiUserBasePath;
 @Injectable({
   providedIn: 'root'
 })
-export class GitService {
+export class ApiService {
 
   owner: string;
   repo: string;
@@ -72,7 +72,7 @@ export class GitService {
 
   }
 
-  fromUserRepo(owner: string, repo: string): GitService {
+  fromUserRepo(owner: string, repo: string): ApiService {
     this.setupOwnerRepoBranch(owner, repo);
     this.updateAPIUrl()
     return this;

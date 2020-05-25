@@ -10,7 +10,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService, GitService, UtilsService } from '../../../_shared/service';
+import { AuthService, UtilsService } from '../../../_shared/service';
+import { ApiService } from '../../../_shared/api';
 import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
 
 @Component({
@@ -20,9 +21,9 @@ import { CloseDialogComponent } from '../close-dialog/close-dialog.component';
 })
 export class ContentComponent implements OnInit {
 
-  @Input() 
+  @Input()
   oneArticle: any;
-  @Output() 
+  @Output()
   onClosed = new EventEmitter<boolean>();
   headerImageStyle: any = {};
   user: string;
@@ -34,7 +35,7 @@ export class ContentComponent implements OnInit {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public authService: AuthService,
-    private gitService: GitService,
+    private apiService: ApiService,
     private utilsService: UtilsService
   ) { }
 
@@ -74,7 +75,7 @@ export class ContentComponent implements OnInit {
   }
 
   closeIssue(): void {
-    this.gitService.updateIssue(
+    this.apiService.updateIssue(
       this.oneArticle.number,
       this.oneArticle.title,
       sessionStorage.getItem('access_token'),
