@@ -1,8 +1,12 @@
 # markdown-site-template
 
-markdown-site-template 是一个用 Angular 编写的站点模板。
+markdown-site-template 是一个基于Angular/Markdown/OpenAPI 编写的站点模板.
 
-## Packages 包
+当前状态预览：
+
+![current-state](./src/assets/images/overview-0.png)
+
+## Frameworks/Packages 
 
 - Ngx-markdown/MarkedJS
 - Angular/PWA
