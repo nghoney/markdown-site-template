@@ -1,14 +1,22 @@
+/*
+ * @Author: Edward https://github.com/crazybber
+ * @Date: 2020-05-24 12:48:18
+ * @LastEditors: Edward
+ * @FilePath: \markdown-site-template\src\app\_shared\service\git.service.ts
+ * @LastEditTime: 2020-05-25 18:00:43
+ * @description: NG markdown site template
+ */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
-import { LeftMenuCatalogItem } from '../model';
+import { LeftMenuCatalogItem, NewsItem } from '../model';
 
 const apiBasePath = environment.apiBasePath;
 const apiRepoBasePath = environment.apiRepoBasePath;
 const apiUserBasePath = environment.apiUserBasePath;
 
-@Injectable({ 
+@Injectable({
   providedIn: 'root'
 })
 export class GitService {
@@ -106,9 +114,10 @@ export class GitService {
       .toPromise();
   }
 
-  // Issues
-  simpleGetIssues(owner: string, repo: string, milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
-    let params = labels ? {
+  // Issues stand for contents
+  simpleGetIssues(milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
+
+    let params = {
       milestone: milestone,
       labels: labels,
       page: '' + page,
@@ -116,18 +125,9 @@ export class GitService {
       state: state,
       sort: sort,
       direction: direction
-    }
-      : {
-        milestone: milestone,
-        page: '' + page,
-        per_page: '' + per_page,
-        state: state,
-        sort: sort,
-        direction: direction
-      };
-    return this.http
-      .get<any[]>(this.gitIssueUrl, { params: params })
-      .toPromise();
+    };
+    console.log('params:',params);
+    return this.http.get<any[]>(this.gitIssueUrl, { params: params }).toPromise();
   }
 
   createIssue(owner: string, repo: string, title: string, body: string, milestone: number, labels: string[], accessToken: string): Promise<any> {
@@ -152,7 +152,7 @@ export class GitService {
       });
   }
 
-  updateIssue(owner: string, repo: string, number: string, title: string, accessToken: string, state?: string, body?: string): Promise<any> {
+  updateIssue(number: string, title: string, accessToken: string, state?: string, body?: string): Promise<any> {
     let url = this.gitIssueUrl + number;
     let requestBody = { title: title, access_token: accessToken, state: state, body: body };
     return this.http
