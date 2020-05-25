@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-folder',
@@ -7,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FolderComponent implements OnInit {
 
+  @Input() dir: string;
+  @Input() sidenav: MatSidenav;
+  @Output() onDeleted = new EventEmitter<boolean>();
+
+  files: any[];
+  isShow = true;
+
+  
   constructor() { }
 
   ngOnInit(): void {

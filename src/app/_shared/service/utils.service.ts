@@ -1,6 +1,14 @@
+/*
+ * @Author: Edward https://github.com/crazybber 
+ * @Date: 2020-05-25 18:12:31 
+ * @Last Modified by: Edward
+ * @Last Modified time: 2020-05-25 18:13:09
+ */
+
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
 
 
 @Injectable()
@@ -48,6 +56,9 @@ export class UtilsService {
     return err.error instanceof Error ? err.error.message : err.status + " " + err.statusText;
   }
 
+  markdownText(text: string): Promise<string> {
+    return of(text).pipe().toPromise();
+  }
 
   emojiParser(text: string): string {
     return text

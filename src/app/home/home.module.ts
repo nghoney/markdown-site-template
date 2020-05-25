@@ -8,9 +8,10 @@ import { NewsComponent } from './news/news.component';
 import { ContentComponent } from './news/content/content.component';
 import { ConfigService, AuthService, UtilsService, ContentService } from '../_shared/service';
 import { FolderComponent } from './folder/folder.component';
+import { CloseDialogComponent } from './news/close-dialog/close-dialog.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, FolderComponent],
+  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, FolderComponent, CloseDialogComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
