@@ -9,10 +9,11 @@ import { ContentComponent } from './news/content-item/content.component';
 import { ConfigService, AuthService, UtilsService, ContentService } from '../_shared/service';
 import { FolderComponent } from './folder/folder.component';
 import { CloseDialogComponent } from './news/close-dialog/close-dialog.component';
+import { DeleteDialogComponent } from "./folder/delete-dialog.component";
 import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, FolderComponent, CloseDialogComponent],
+  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, FolderComponent, CloseDialogComponent, DeleteDialogComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
