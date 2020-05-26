@@ -11,7 +11,7 @@ import { DeleteDialogComponent } from './delete-dialog.component';
   templateUrl: './folder.component.html',
   styleUrls: ['./folder.component.scss']
 })
-export class FolderComponent implements OnInit {
+export class SubMenusComponent implements OnInit {
 
   @Input() dir: string;
   @Input() sidenav: MatSidenav;
