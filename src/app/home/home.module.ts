@@ -11,9 +11,10 @@ import { SubMenusComponent } from './sub-menus/sub-menus.component';
 import { CloseDialogComponent } from './news/close-dialog/close-dialog.component';
 import { DeleteDialogComponent } from "./sub-menus/delete-dialog.component";
 import { MarkdownModule } from 'ngx-markdown';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, SubMenusComponent, CloseDialogComponent, DeleteDialogComponent],
+  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, SubMenusComponent, CloseDialogComponent, DeleteDialogComponent, MenuComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

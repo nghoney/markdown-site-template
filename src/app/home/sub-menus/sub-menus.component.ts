@@ -7,9 +7,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteDialogComponent } from './delete-dialog.component';
 
 @Component({
-  selector: 'app-folder',
-  templateUrl: './folder.component.html',
-  styleUrls: ['./folder.component.scss']
+  selector: 'app-sub-menus',
+  templateUrl: './sub-menus.component.html',
+  styleUrls: ['./sub-menus.component.scss']
 })
 export class SubMenusComponent implements OnInit {
 
