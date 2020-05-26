@@ -53,7 +53,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
 
     this.apiService.getRepo().then(repo => this.length = repo.open_issues_count);
 
-    this.newsContentList = this.matPaginatorIntl.changes.pipe(switchMap(() => this.apiService.simpleGetIssues(
+    this.newsContentList = this.matPaginatorIntl.changes.pipe(switchMap(() => this.apiService.getStateMilestoneIssues(
       'latest-news',
       this.pageEvent ? this.pageEvent.pageIndex + 1 : 1,
       this.pageSize)

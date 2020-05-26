@@ -22,7 +22,7 @@ export class ContentService {
 
   getFiles(dir: string): Promise<any[]> {
     return this.apiService
-      .simpleGetIssues('documents', 1, 100, 'open', 'created', 'asc', dir);
+      .getStateMilestoneIssues('documents', 1, 100, 'open', 'created', 'asc', dir);
   }
 
   getFile(number: string): Observable<any> {
@@ -67,6 +67,7 @@ export class ContentService {
           )
       );
   }
+
 
   // delete files
   deleteFile(number: string, title: string): Promise<any> {

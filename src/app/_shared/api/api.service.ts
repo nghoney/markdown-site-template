@@ -114,8 +114,8 @@ export class ApiService {
       .toPromise();
   }
 
-  // Issues stand for contents
-  simpleGetIssues(milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
+  //getStateMilestoneIssues : Issues stand for contents
+  getStateMilestoneIssues(milestone: string, page = 1, per_page = 20, state = 'open', sort = 'created', direction = 'desc', labels?: string): Promise<any[]> {
 
     let params = labels ?
       {

@@ -1,1 +1,11 @@
-<p>folder works!</p>
+<div *ngIf="isShow">
+    <mat-nav-list dense>
+        <mat-list-item *ngFor="let file of files" routerLink="/docs/{{file.number}}" (click)="close()">
+            <mat-icon mat-list-icon color="primary">note</mat-icon>
+            <a mat-line>{{file.title}}</a>
+            <mat-icon class="delete-btn" color="accent"
+                (click)="openDeleteBlogDialog('/docs/' + dir + '/' + file.title, file.number, file.title)">remove_circle
+            </mat-icon>
+        </mat-list-item>
+    </mat-nav-list>
+</div>
