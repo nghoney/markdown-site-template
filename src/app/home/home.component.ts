@@ -4,9 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../_shared/service/auth.service';
-import { UtilsService } from '../_shared/service/utils.service';
-import { ContentService } from '../_shared/service/content.service';
+import { AuthService, UtilsService, ContentService } from '../_shared/service';
+
 
 
 @Component({

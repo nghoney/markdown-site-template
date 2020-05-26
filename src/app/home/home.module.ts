@@ -14,7 +14,15 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent, NewsComponent, ContentComponent, SubMenusComponent, CloseDialogComponent, DeleteDialogComponent, MenuComponent],
+  declarations: [
+    HomeComponent,
+    FooterComponent,
+    NewsComponent,
+    ContentComponent,
+    SubMenusComponent,
+    CloseDialogComponent,
+    DeleteDialogComponent,
+    MenuComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

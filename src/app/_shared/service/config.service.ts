@@ -33,7 +33,7 @@ export class ConfigService {
   }
 
   initConfigByRoute() {
-    //console.log('routes snapshot url: ', this.routes.snapshot.url)
+    console.log('routes snapshot url: ', this.routes.snapshot.url)
   }
 
 

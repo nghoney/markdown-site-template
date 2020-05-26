@@ -29,7 +29,10 @@ export class SubMenusComponent implements OnInit {
 
   ngOnInit() {
     this.contentService.getFiles(this.dir)
-      .then(files => this.files = files);
+      .then(files => {
+        this.files = files;
+        console.log('files:', this.files);
+      });
   }
 
   close(): void {

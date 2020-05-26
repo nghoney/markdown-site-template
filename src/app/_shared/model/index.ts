@@ -10,3 +10,4 @@
 export * from './config';
 export * from './menu-item';
 export * from './news-item';
+export * from './sub-menu-item';
