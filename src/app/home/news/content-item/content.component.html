@@ -9,6 +9,6 @@
         <mat-card-subtitle>{{createAt | date:"yyyy-MM-dd" }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <markdown class="markdown-section body-content" [innerHTML]="body"></markdown>
+        <markdown class="markdown-section body-content" [data]="body"></markdown>
     </mat-card-content>
 </mat-card>
