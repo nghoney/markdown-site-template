@@ -1,16 +1,25 @@
-<mat-list>
-    <h3 mat-subheader>Content List<mat-icon id="add-btn" color="accent" (click)="close(); openAddBlogDialog()">
-        add_circle</mat-icon>
-    </h3>
-    <div *ngFor="let menuItem of leftMenuCatalogs">
-      <mat-expansion-panel [expanded]="isMarkedDir(menuItem.name)">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon class="dirIcon" mat-line color="primary">folder</mat-icon>
-            {{menuItem.name}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <app-sub-menus #files [dir]="menuItem.name" [sidenav]="sidenav" (onDeleted)="onDeleted($event)"></app-sub-menus>
-      </mat-expansion-panel>
-    </div>
-  </mat-list>
+<mat-sidenav #sidenav mode="{{getSideNavMode()}}" opened="{{isDefaultOpen()}}">
+    <button class="side-btn" mat-mini-fab (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-list>
+        <h3 mat-subheader>Content List<mat-icon id="add-btn" color="accent" (click)="close(); openAddBlogDialog()">
+                add_circle</mat-icon>
+        </h3>
+        <div *ngFor="let menuItem of leftMenuCatalogs">
+            <mat-expansion-panel [expanded]="isMarkedDir(menuItem.name)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon class="dirIcon" mat-line color="primary">folder</mat-icon>
+                        {{menuItem.name}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-sub-menus #files [dir]="menuItem.name" [sidenav]="sidenav" (onDeleted)="onDeleted($event)">
+                </app-sub-menus>
+            </mat-expansion-panel>
+        </div>
+    </mat-list>
+</mat-sidenav>
+<button class="content-btn" mat-mini-fab (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+</button>
