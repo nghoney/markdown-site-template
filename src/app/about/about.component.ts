@@ -9,13 +9,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AboutComponent implements OnInit {
   content: string;
-  isOnLoading = true;
-
+   isOnLoading = false;
+  headerImageStyle: any = {};
   constructor(
   //  private confService: ConfigService ,
   //  public dialogRef: MatDialogRef<AboutComponent>,
   //  @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) { 
+    this.headerImageStyle = {
+      'background-image': "url('" + 'https://arch.run' + "')",
+      'background-size': 'cover'
+    }
+  }
 
   ngOnInit() {
 

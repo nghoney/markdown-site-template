@@ -1,7 +1,15 @@
 <mat-spinner *ngIf="isOnLoading"></mat-spinner>
 <div class="markdown-content-section">
-    <markdown>
-     about me
-    </markdown>
-    <markdown [src]="'assets/remote/about.md'"></markdown>
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar [ngStyle]="headerImageStyle"></div>
+            <mat-card-title>
+                <h4> about </h4>
+            </mat-card-title>
+            <mat-card-subtitle> some description will be put here</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <markdown class="markdown-section body-content" [src]="'assets/remote/about.md'"></markdown>
+        </mat-card-content>
+    </mat-card>
 </div>
