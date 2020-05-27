@@ -15,5 +15,16 @@
     },
     "fileheader.Author": "Edward https://github.com/crazybber",
     "fileheader.LastModifiedBy": "Edward",
-    "fileheader.tpl": "/*\r\n * @Repo: https://github.com/nghoney/markdown-site-template \r\n * @Author: {author} \r\n * @Date: {createTime} \r\n * @Last Modified by: {lastModifiedBy} \r\n * @Last Modified time: {updateTime} \r\n */\r\n\r\n"
+    "fileheader.tpl": "/*\r\n * @Repo: https://github.com/nghoney/markdown-site-template \r\n * @Author: {author} \r\n * @Date: {createTime} \r\n * @Last Modified by: {lastModifiedBy} \r\n * @Last Modified time: {updateTime} \r\n */\r\n\r\n",
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#505e8d",
+        "titleBar.inactiveBackground": "#505e8d",
+        "titleBar.activeForeground": "#faf8f8",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "titleBar.border": "#5e7959"
+    }
 }
