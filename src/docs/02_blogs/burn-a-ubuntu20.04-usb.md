@@ -1,4 +1,4 @@
-# Ubuntu20.04 boot system disk
+# create a ubuntu 20.04 boot disk
 
 插入U盘，在Linux系统中打开终端，查看 U 盘信息： 
 
