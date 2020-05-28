@@ -31,3 +31,8 @@ windows的用Win32DiskImager 来制作U盘启动
 185509_EBqv_102140.jpg
 
 麻雀虽小，五脏俱全！推荐使用此款软件U盘刻录Ubuntu14.04以后的新版本）
+
+
+优麒麟U盘刻录14.10镜像出问题的解决方法
+https://www.ubuntukylin.com/news/362-cn.html
+
