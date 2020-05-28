@@ -17,7 +17,7 @@ U 盘格式化：
 
 格式化后查看磁盘信息： 
 
-`sudo fdisk -l /dev/sdb4`
+`sudo fdisk -l /dev/sdb`
  
 
 最后使用 dd 命令制作启动盘：
