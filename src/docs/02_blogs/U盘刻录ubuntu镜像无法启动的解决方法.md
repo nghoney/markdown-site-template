@@ -3,7 +3,7 @@ U盘刻录ubuntu镜像无法启动的解决方法
 
 《U盘刻录ubuntu镜像无法启动的解决方法》大致内容
 
-    从几个月前的14.10 daily 版本就有U盘刻录无法启动的现象，相关bug可参见：https://bugs.launchpad.net/ubuntu/+source/usb-creator/+bug/1325801
+    从几个月前的14.10 daily 版本就有U盘刻录无法启动的现象，相关bug可参见：<https://bugs.launchpad.net/ubuntu/+source/usb-creator/+bug/1325801>
 
        系统镜像本身没有任何问题，刻录光盘、dd到U盘启动都是正常的。
        
