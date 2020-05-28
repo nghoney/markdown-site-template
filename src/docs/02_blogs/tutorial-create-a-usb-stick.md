@@ -23,3 +23,23 @@ when the standard tools like Unetbootin might not be ready
 (if the configuration of the booting has been changed since the previous release).
 
 https://wiki.ubuntu.com/Win32DiskImager/iso2usb
+
+
+##  mkusb/advanced
+
+`mkusb`
+
+or if you want to use the new user interface dus (alias mkusb version 12) directly
+
+`dus`
+
+or
+
+`dus file.iso `
+
+Notice that you need quotes, when you specify the path to the source file as a command line parameter and use spaces and some special characters.
+
+
+`dus "path with spaces/filename with (special) characters.iso" `
+
+https://help.ubuntu.com/community/mkusb/advanced
