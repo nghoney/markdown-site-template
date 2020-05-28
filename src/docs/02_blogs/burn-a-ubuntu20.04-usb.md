@@ -22,6 +22,6 @@ U 盘格式化：
 
 最后使用 dd 命令制作启动盘：
 
-`sudo dd if=ubuntukylin-20.04-desktop-amd64.iso of=/dev/sdb4 bs=10M`
+`sudo dd if=ubuntu-20.04-desktop-amd64.iso of=/dev/sdb4 bs=10M`
 
 
