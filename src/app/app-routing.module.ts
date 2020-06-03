@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
-import { UpdateComponent } from './update/update.component';
 import { AuthService } from './_shared/service/auth.service';
 import { InitComponent } from './init/init.component';
 
@@ -15,7 +14,6 @@ const routes: Routes = [
   { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
   { path: 'about', component: AboutComponent },
   { path: 'login', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
-  { path: 'update', component: UpdateComponent },
   { path: 'init', component: InitComponent, canActivate: [AuthService] },
   { path: '**', component: NotFoundComponent }
 ];

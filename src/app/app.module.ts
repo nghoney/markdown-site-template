@@ -13,7 +13,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NavBarModule } from './_shared/navbar';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { UpdateComponent } from './update/update.component';
 import { InitComponent } from './init/init.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
@@ -34,7 +33,6 @@ export function markedOptions(): MarkedOptions {
     AppComponent,
     AboutComponent,
     NotFoundComponent,
-    UpdateComponent,
     InitComponent
   ],
   imports: [
