@@ -3,18 +3,18 @@
  * @Author: Edward https://github.com/crazybber
  * @Date: 2020-06-03 16:24:02
  * @Last Modified by: Edward
- * @Last Modified time: 2020-06-03 16:24:02
+ * @Last Modified time: 2020-06-03 17:15:48
  */
 
 
-import { IssueContent } from './issue-item';
+import { IssueItem } from './issue-item';
 import { User } from './user';
 
 export class IssueItemNotification {
     error: string;
     hasValue: boolean;
     kind: string;
-    value :IssueContent;
+    value :IssueItem;
     user : User;
 }
 

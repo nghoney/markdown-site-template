@@ -3,10 +3,10 @@
  * @Author: Edward https://github.com/crazybber
  * @Date: 2020-06-03 16:24:09
  * @Last Modified by: Edward
- * @Last Modified time: 2020-06-03 16:24:09
+ * @Last Modified time: 2020-06-03 17:14:50
  */
 
-export class IssueContent {
+export class IssueItem {
     title: string;
     state: string;
     url: string;

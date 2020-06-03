@@ -6,6 +6,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { switchMap, debounceTime, distinctUntilChanged, materialize } from 'rxjs/operators';
 import { Location } from '@angular/common';
+import { IssueItem } from 'src/app/_shared/model';
 @Component({
   selector: 'app-md-content',
   templateUrl: './md-content.component.html',
@@ -32,35 +33,43 @@ export class MdContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.articleContent = this.markTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap(code => this.utilsService.markdownText(this.utilsService.emojiParser(code)))
-    );
 
     this.activatedRoute.params.pipe(
       switchMap((params: ParamMap) => {
         this.isOnLoading = true;
         this.number = params['number'];
-        return this.contentService
-          .getFile(params['number']);
+        return this.contentService.getFile(params['number']);
       }),
       materialize(),
     ).subscribe(notification => {
+      // console.log('get article(issue) content notification',notification)
       if (notification.hasValue) {
-        this.code = notification.value.body;
-        this.title = notification.value.title;
-        this.codeBackup = this.code;
-        this.mark(this.code);
+        this.handleIssueContent(notification.value)
         this.isOnLoading = false;
       } else if (notification.error) {
-        this.code = "error loading";
-        this.codeBackup = this.code;
-        this.mark(this.code);
+        this.handleIssueContent(notification.value, true)
         this.isOnLoading = false;
       }
     });
 
+    this.articleContent = this.markTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      //     switchMap(code => this.utilsService.markdownText(this.utilsService.emojiParser(code)))
+    );
+
+  }
+
+  handleIssueContent(content: IssueItem, err?: boolean): void {
+
+    if (err) {
+      content.body = "error loading";
+      this.title = "error occurred";
+    }
+    this.code = content.body;
+    this.title = content.title;
+    this.codeBackup = this.code;
+    this.mark(this.code);
 
   }
 

@@ -4,6 +4,7 @@ import { ConfigService } from './config.service';
 import { ApiService } from '../api/api.service';
 import { UtilsService } from './utils.service';
 import { Observable } from 'rxjs';
+import { IssueItem } from '../model';
 
 @Injectable()
 export class ContentService {
@@ -25,7 +26,7 @@ export class ContentService {
       .getStateMilestoneIssues('documents', 1, 100, 'open', 'created', 'asc', label);
   }
 
-  getFile(number: string): Observable<any> {
+  getFile(number: string): Observable<IssueItem> {
     return this.apiService.getIssue(number)
   }
 

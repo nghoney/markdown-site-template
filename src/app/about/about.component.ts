@@ -11,11 +11,12 @@ export class AboutComponent implements OnInit {
   content: string;
    isOnLoading = false;
   headerImageStyle: any = {};
+  titleDescription = "this is some description will be put here";
   constructor(
   //  private confService: ConfigService ,
   //  public dialogRef: MatDialogRef<AboutComponent>,
   //  @Inject(MAT_DIALOG_DATA) public data: any
-  ) { 
+  ) {
     this.headerImageStyle = {
       'background-image': "url('" + 'https://arch.run' + "')",
       'background-size': 'cover'
