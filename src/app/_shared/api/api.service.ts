@@ -152,7 +152,7 @@ export class ApiService {
       .toPromise();
   }
 
-  getIssue(owner: string, repo: string, number: string, accessToken?: string): Observable<any> {
+  getIssue(number: string, accessToken?: string): Observable<any> {
     let url = this.gitIssueUrl + number;
     let params = accessToken ? { access_token: accessToken } : {};
     return this.http

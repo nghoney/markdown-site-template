@@ -1,6 +1,6 @@
 /*
- * @Author: Edward https://github.com/crazybber 
- * @Date: 2020-05-25 18:12:31 
+ * @Author: Edward https://github.com/crazybber
+ * @Date: 2020-05-25 18:12:31
  * @Last Modified by: Edward
  * @Last Modified time: 2020-05-25 18:41:06
  */
@@ -33,10 +33,8 @@ export class UtilsService {
         break;
       }
     }
-
     return flag;
   }
-
 
   // 将字符串编码为 base64
   b64EncodeUnicode(str): string {

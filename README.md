@@ -6,12 +6,12 @@ markdown-site-template 是一个基于Angular/Markdown/OpenAPI 编写的站点�
 
 ![current-state](./src/assets/images/overview-0.png)
 
-## Frameworks/Packages 
+## Frameworks/Packages
 
 - Ngx-markdown/MarkedJS
 - Angular/PWA
 - Angular/Material
-- Angular/i18n 
+- Angular/i18n
 
 ## Features 特点
 

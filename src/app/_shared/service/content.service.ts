@@ -26,12 +26,11 @@ export class ContentService {
   }
 
   getFile(number: string): Observable<any> {
-    return this.apiService
-      .getIssue(
-        this.confService.config.owner,
-        this.confService.config.repo,
-        number
-      )
+    return this.apiService.getIssue(number)
+  }
+
+  getFileFromRepo(){
+
   }
 
   getFileContent(path: string): Observable<any> {
