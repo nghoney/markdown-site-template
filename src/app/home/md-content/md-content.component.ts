@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ContentService, AuthService, UtilsService } from '../../_shared/service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { switchMap, debounceTime, distinctUntilChanged, materialize } from 'rxjs/operators';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-md-content',
   templateUrl: './md-content.component.html',
@@ -16,7 +17,7 @@ export class MdContentComponent implements OnInit {
   title: string;
   codeBackup: string;
   code: string;
-  file: Observable<string>;
+  articleContent: Observable<string>;
   isOnLoading = true;
   isChanged: boolean;
   private markTerms = new Subject<string>();
@@ -24,14 +25,14 @@ export class MdContentComponent implements OnInit {
   constructor(
     public snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private location: Location,
+    @Inject(Location) private location: Location,
     public authService: AuthService,
     private contentService: ContentService,
     private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
-    this.file = this.markTerms.pipe(
+    this.articleContent = this.markTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap(code => this.utilsService.markdownText(this.utilsService.emojiParser(code)))
@@ -74,7 +75,7 @@ export class MdContentComponent implements OnInit {
         this.number,
         this.title,
         this.code,
-        this.location.pathname
+        this.location.path()
       )
       .then(() => {
         this.codeBackup = this.code;
@@ -96,7 +97,5 @@ export class MdContentComponent implements OnInit {
     this.isChanged = this.code != this.codeBackup;
   }
 
-  test(): void {
-    document.getElementsByClassName('markdown-section')[0].innerHTML = document.getElementsByClassName('markdown-section')[0].innerHTML.replace(/<p>##&nbsp;\S*<\/p>/g, '<h2></h2>');
-  }
+
 }

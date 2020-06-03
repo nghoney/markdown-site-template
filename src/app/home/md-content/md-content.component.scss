@@ -1,6 +1,6 @@
 @media (max-width: 600px) {
     .markdown-section {
-      width: 89%;
+      width: 90%;
     }
   }
 
@@ -15,7 +15,8 @@
   }
 
   mat-tab-group {
-    min-height: calc(100% - 56px);
+    min-height: calc(100% - 3em);
+    padding: 0em 2em;
   }
 
   mat-form-field {
@@ -24,7 +25,7 @@
 
   textarea {
     width: calc(100% - 4em);
-    padding: 0 2em;
+    padding: 2em 2em;
     resize: none;
     display: block;
     overflow-x: hidden !important;

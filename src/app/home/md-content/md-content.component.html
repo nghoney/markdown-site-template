@@ -4,7 +4,7 @@
     <ng-template mat-tab-label>
       <mat-icon>remove_red_eye</mat-icon>
     </ng-template>
-    <div class="markdown-section"> this is content </div>
+    <div class="markdown-section" [innerHTML]="articleContent | async"></div>
   </mat-tab>
   <mat-tab label="edit">
     <ng-template mat-tab-label>
