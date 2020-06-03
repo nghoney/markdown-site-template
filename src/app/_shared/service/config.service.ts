@@ -5,7 +5,7 @@
  * @FilePath: \markdown-site-template\src\app\_shared\service\config.service.ts
  * @LastEditTime: 2020-05-25 16:48:33
  * @description: NG markdown site template @ MIT License
- */ 
+ */
 
 import { Injectable, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ import { Location } from '@angular/common';
 
 const targetBranch = environment.branch
 const baseUrl = environment.pageBaseUrl;
+
+//singleton pattern
 @Injectable({
   providedIn: 'root',
 })

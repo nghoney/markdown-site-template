@@ -1,1 +1,21 @@
-<p>md-content works!</p>
+<mat-progress-bar *ngIf="isOnLoading" mode="indeterminate"></mat-progress-bar>
+<mat-tab-group #tabGroup>
+  <mat-tab label="view">
+    <ng-template mat-tab-label>
+      <mat-icon>remove_red_eye</mat-icon>
+    </ng-template>
+    <div class="markdown-section"> this is content </div>
+  </mat-tab>
+  <mat-tab label="edit">
+    <ng-template mat-tab-label>
+      <mat-icon>code</mat-icon>
+    </ng-template>
+    <mat-form-field>
+      <textarea matInput [(ngModel)]="code" (keyup)="mark(code)" cols="300"></textarea>
+    </mat-form-field>
+  </mat-tab>
+</mat-tab-group>
+<app-footer></app-footer>
+<button *ngIf="isChanged" class="edit-btn" mat-fab (click)="updateFileContent()">
+  <mat-icon>save</mat-icon>
+</button>

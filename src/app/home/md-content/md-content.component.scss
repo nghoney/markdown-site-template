@@ -1,0 +1,108 @@
+@media (max-width: 600px) {
+    .markdown-section {
+      width: 89%;
+    }
+  }
+
+  .comment-label {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  mat-progress-bar {
+    position: fixed;
+  }
+
+  mat-tab-group {
+    min-height: calc(100% - 56px);
+  }
+
+  mat-form-field {
+    width: 100% !important;
+  }
+
+  textarea {
+    width: calc(100% - 4em);
+    padding: 0 2em;
+    resize: none;
+    display: block;
+    overflow-x: hidden !important;
+    word-wrap: break-word;
+    overflow-y: visible !important;
+    height: calc(100vh - 210px);
+  }
+
+  .edit-btn {
+    position: fixed;
+    right: 3vw;
+    bottom: 3vw;
+    z-index: 5;
+  }
+
+  :host > h1 {
+    font-size: 32px;
+    font-size: 2rem;
+    margin: 0 0 16px;
+    margin: 0 0 1rem
+  }
+
+  :host > h2 {
+    font-size: 28px;
+    font-size: 1.75rem;
+    margin: 45px 0 12.8px;
+    margin: 45px 0 .8rem
+  }
+
+  :host > h3 {
+    font-size: 24px;
+    font-size: 1.5rem;
+    margin: 40px 0 9.6px;
+    margin: 40px 0 .6rem
+  }
+
+  :host > h4 {
+    font-size: 20px;
+    font-size: 1.25rem
+  }
+
+  :host > h5, :host > h6 {
+    font-size: 16px;
+    font-size: 1rem
+  }
+
+  :host > h6 {
+    color: #777
+  }
+
+  :host > img {
+      max-width: 100%
+  }
+
+  :host > blockquote {
+    color: #858585;
+    margin: 2em 0;
+    padding-left: 20px
+  }
+
+  :host > code, :host > pre {
+    background: rgba(0,0,0,.03);
+    border: .5px solid rgba(0,0,0,.03);
+    font-family: Roboto Mono,Monaco,courier,monospace;
+  }
+
+  :host > code {
+    border-radius: 2px;
+    font-size: 90%;
+    padding: 3px;
+    white-space: pre-wrap;
+  }
+
+  :host > pre {
+    overflow: auto;
+    font-size: 14px;
+    padding: 20px;
+  }
+
+
+
