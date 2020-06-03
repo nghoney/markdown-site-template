@@ -1,10 +1,10 @@
 <div *ngIf="isShow">
     <mat-nav-list dense>
-        <mat-list-item *ngFor="let file of files" routerLink="/docs/{{file.number}}" (click)="close()">
+        <mat-list-item *ngFor="let subMenuItem of subMenuList" routerLink="/docs/{{subMenuItem.number}}" (click)="close()">
             <mat-icon mat-list-icon color="primary">note</mat-icon>
-            <a mat-line>{{file.title}}</a>
+            <a mat-line>{{subMenuItem.title}}</a>
             <mat-icon class="delete-btn" color="accent"
-                (click)="openDeleteBlogDialog('/docs/' + dir + '/' + file.title, file.number, file.title)">remove_circle
+                (click)="openDeleteBlogDialog('/docs/' + dirLabel + '/' + subMenuItem.title, subMenuItem.number, subMenuItem.title)">remove_circle
             </mat-icon>
         </mat-list-item>
     </mat-nav-list>

@@ -20,9 +20,9 @@ export class ContentService {
     return this.apiService.getLabels();
   }
 
-  getFiles(dir: string): Promise<any[]> {
+  getFiles(label: string): Promise<any[]> {
     return this.apiService
-      .getStateMilestoneIssues('documents', 1, 100, 'open', 'created', 'asc', dir);
+      .getStateMilestoneIssues('documents', 1, 100, 'open', 'created', 'asc', label);
   }
 
   getFile(number: string): Observable<any> {

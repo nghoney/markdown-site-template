@@ -12,6 +12,7 @@ import { CloseDialogComponent } from './news/close-dialog/close-dialog.component
 import { DeleteDialogComponent } from "./sub-menus/delete-dialog.component";
 import { MarkdownModule } from 'ngx-markdown';
 import { MenuComponent } from './menu/menu.component';
+import { MdContentComponent } from './md-content/md-content.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MenuComponent } from './menu/menu.component';
     SubMenusComponent,
     CloseDialogComponent,
     DeleteDialogComponent,
-    MenuComponent],
+    MenuComponent,
+    MdContentComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

@@ -13,11 +13,11 @@ import { DeleteDialogComponent } from './delete-dialog.component';
 })
 export class SubMenusComponent implements OnInit {
 
-  @Input() dir: string;
+  @Input() dirLabel: string;
   @Input() sidenav: MatSidenav;
   @Output() onDeleted = new EventEmitter<boolean>();
 
-  files: any[];
+  subMenuList: any[];
   isShow = true;
 
   constructor(
@@ -28,10 +28,10 @@ export class SubMenusComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentService.getFiles(this.dir)
-      .then(files => {
-        this.files = files;
-        console.log('files:', this.files);
+    this.contentService.getFiles(this.dirLabel)
+      .then(remoteFiles => {
+        this.subMenuList = remoteFiles;
+        console.log('left sub menu list:', this.subMenuList);
       });
   }
 

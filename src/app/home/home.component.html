@@ -15,7 +15,7 @@
               {{menuItem.name}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <app-sub-menus #files [dir]="menuItem.name" [sidenav]="sidenav" (onDeleted)="onDeleted($event)"></app-sub-menus>
+          <app-sub-menus #files [dirLabel]="menuItem.name" [sidenav]="sidenav" (onDeleted)="onDeleted($event)"></app-sub-menus>
         </mat-expansion-panel>
       </div>
     </mat-list>

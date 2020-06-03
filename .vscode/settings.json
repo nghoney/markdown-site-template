@@ -6,6 +6,7 @@
         "gitee",
         "paginator",
         "prefetch",
+        "sidenav",
         "tslib"
     ],
     "files.watcherExclude": {
