@@ -156,9 +156,7 @@ export class ApiService {
     let url = this.gitIssueUrl + number;
     let params = accessToken ? { access_token: accessToken } : {};
     return this.http
-      .get(url, {
-        params: params
-      });
+      .get(url, { params: params });
   }
 
   updateIssue(number: string, title: string, accessToken: string, state?: string, body?: string): Promise<any> {

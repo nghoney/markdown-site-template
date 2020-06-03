@@ -183,7 +183,6 @@ tags_url: "https://gitee.com/api/v5/repos/crazybber/markdown-site-template/tags"
 updated_at: "2020-05-26T22:34:20+08:00"
 url: "https://gitee.com/api/v5/repos/crazybber/markdown-site-template"
 watchers_count: 2
-__proto__: Object
 repository_url: "https://gitee.com/api/v5/repos/crazybber/markdown-site-template"
 scheduled_time: 0
 security_hole: false
